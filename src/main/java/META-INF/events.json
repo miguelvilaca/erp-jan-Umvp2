@@ -1,0 +1,33 @@
+{
+	"onSystemStarts": {
+		"blocklyClass": "blockly.RunAtStartup",
+		"blocklyMethod": "Executar",
+		"blockly": {
+			"namespace": "blockly.RunAtStartup",
+			"classNameNew": "RunAtStartup",
+			"classNameOld": "RunAtStartup",
+			"sourcePath": "src/main/java/blockly/RunAtStartup.blockly",
+			"language": "java",
+			"class": "blockly.RunAtStartup",
+			"methods": [
+				{
+					"name": "Executar",
+					"hasReturn": "true",
+					"params": []
+				}
+			]
+		}
+	},
+	"onLogout": null,
+	"onLogin": null,
+	"onSessionCreate": null,
+	"onSessionDestroy": null,
+	"afterPageRender": null,
+	"afterLoginRender": null,
+	"afterHomeRender": null,
+	"onAuthenticate": null,
+	"onGetRoles": null,
+	"onGetMultitenantId": null,
+	"onChangePassword": null,
+	"onChangeTheme": null
+}

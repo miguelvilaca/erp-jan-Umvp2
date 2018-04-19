@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><blockly formTarget="" resourceType="JAVA" ruleDescription="RunLongPoolingBot" ruleName="RunLongPoolingBot" ruleSynchronous="false" ruleTimeout="" ruleType="I">
+  <metadata scale="1" scrollx="373.00000000000017" scrolly="-18.999999999999886" target="Anb:u5+^,0vLkL9QIqn5"/>
+  <block colour="#995ba5" id="Anb:u5+^,0vLkL9QIqn5" origintype="procedures_defreturn" output="false" tooltip="Cria uma função que possui um valor de retorno." type="procedures_defreturn" x="-350" y="130">
+    <field name="NAME">Executar</field>
+    <comment h="80" pinned="false" w="160">RunLongPoolingBot</comment>
+    <statement name="STACK">
+      <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="2:;[Nh^MyZwpZ`T^a$Pi" origintype="variables_set" output="false" tooltip="Define esta variável para o valor da entrada." type="variables_set">
+        <field name="VAR">token</field>
+        <value name="VALUE">
+          <block colour="#5ba593" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="K+2Vv?.PqhnwJP*MEP~@" origintype="text" output="true" tooltip="function () { [native code] }" type="text">
+            <field name="TEXT">571514660:AAGG-86rVJlCKkN8-Oz1OFPoSrXZ8wJ7_KM</field>
+          </block>
+        </value>
+        <next>
+          <block colour="#995ba5" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="z9.2KT~-It*!`ewy9u:U" multilayer="false" namespace="cronapi.telegram.bots.TelegramBotOperations.startBotSession" origintype="procedures_callreturn" output="false" returntype="ObjectType.VOID" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EIniciar%20sess%C3%A3o%20do%20Bot%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EInicie%20uma%20sess%C3%A3o%20do%20Bot%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Par%C3%A2metros%20do%20m%C3%A9todo%20Iniciar%20sess%C3%A3o%20do%20Bot%20:%20Objeto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Par%C3%A2metro%20do%20manipulador%20:%20Envio%20de%20comandos%3C/span%3E%3Cbr%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Sem%20retorno%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.telegram.bots.TelegramBotOperations.startBotSession%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.telegram.bots.TelegramBotOperations.startBotSession%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_callreturn">
+            <mutation name="{{cronapi.telegram.bots.TelegramBotOperations.startBotSession}}" return-raw-type="java.lang.String">
+              <arg cronapi-raw-type="cronapi.telegram.bots.methods.GetUpdates" cronapi-type="ObjectType.OBJECT" name="Parâmetros do método Iniciar sessão do Bot"/>
+              <arg cronapi-raw-type="cronapi.util.Callback" cronapi-type="ObjectType.STATEMENTSENDER" name="Parâmetro do manipulador"/>
+            </mutation>
+            <field name="VAR_SENDERARG1">update</field>
+            <value name="ARG0">
+              <block colour="#404340" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="Yq5z}08C(kcm?#Yb_Zgy" multilayer="false" namespace="cronapi.object.Operations.newObject" origintype="procedures_createnewobject_callreturn" output="true" returntype="ObjectType.OBJECT" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3ECriar%20novo%20objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20cria%20um%20novo%20objeto%20%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Texto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Par%C3%A2metros%20:%20Mapa%3C/span%3E%3Cdiv%3E%20Par%C3%A2metros%20a%20serem%20passados%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.newObject%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.newObject%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_createnewobject_callreturn">
+                <mutation data="%7B%22entity%22:%22cronapi.telegram.bots.methods.GetUpdates%22,%22entityFullName%22:%22cronapi.telegram.bots.methods.GetUpdates%22,%22params%22:%22%5B%5C%22token%5C%22%5D%22,%22paramTypes%22:%22%5B%5C%22java.lang.String%5C%22%5D%22,%22type%22:%22F%22%7D" name="{{cronapi.object.Operations.newObject}}">
+                  <arg name="token"/>
+                </mutation>
+                <value name="ARG0">
+                  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="V#]]kN0eXSba?*t%7:L#" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                    <field name="VAR">token</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="ARG1">
+              <block colour="#487f7f" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="x*i^b8eep8Ppx,Q#yU0=" multilayer="false" namespace="cronapi.util.Operations.callBlocklyNoReturn" origintype="procedures_callblockly_callnoreturn" output="false" returntype="ObjectType.VOID" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EChamar%20Bloco%20sem%20retorno%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20chama%20um%20bloco%20sem%20retorno%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Nome%20do%20bloco%20:%20Texto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Par%C3%A2metros%20:%20Texto%3C/span%3E%3Cbr%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.util.Operations.callBlocklyNoReturn%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.util.Operations.callBlocklyNoReturn%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_callblockly_callnoreturn">
+                <mutation data="%7B%22name%22:%22TelegramUpdatesHandler%22,%22class%22:%22blockly.TelegramUpdatesHandler%22,%22function%22:%22Executar%22,%22oldName%22:%22Executar%22,%22params%22:%22%5B%5C%22update%5C%22%5D%22,%22type%22:%22java%22,%22namespace%22:%22blockly.TelegramUpdatesHandler%22%7D" name="{{cronapi.util.Operations.callBlocklyNoReturn}}">
+                  <arg name="update"/>
+                </mutation>
+                <value name="ARG0">
+                  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="u6#m{cc?rKzDFK|3T9i`" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                    <field name="VAR">update</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block colour="#404340" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="Dk9A$rsRH;cUsDRf9lzA" multilayer="false" namespace="cronapi.object.Operations.getObjectField" origintype="procedures_get_field" output="true" returntype="ObjectType.OBJECT" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EObter%20campo%20do%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20para%20obter%20campo%20do%20Objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Objeto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Caminho%20a%20percorrer%20:%20Texto%3C/span%3E%3Cdiv%3E%20Exemplo:%20estado%5B3%5D.uf%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.getObjectField%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.getObjectField%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_get_field" x="118" y="2058">
+    <mutation name="{{cronapi.object.Operations.getObjectField}}">
+      <arg name="Objeto"/>
+      <arg name="Caminho a percorrer"/>
+    </mutation>
+    <value name="PARAM0">
+      <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="/UFrX8UTsnfv.#}Pi8#I" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+        <field name="VAR">watsonMessage</field>
+      </block>
+    </value>
+    <value name="PARAM1">
+      <block colour="#5ba593" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="I]0^k1R%VDg1?NTx;%OS" origintype="text" output="true" tooltip="function () { [native code] }" type="text">
+        <field name="TEXT">output.text</field>
+      </block>
+    </value>
+  </block>
+</blockly>
