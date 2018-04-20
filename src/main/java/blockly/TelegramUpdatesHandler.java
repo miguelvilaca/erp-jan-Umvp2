@@ -51,7 +51,7 @@ public class TelegramUpdatesHandler {
 				chatId = cronapi.object.Operations.getObjectField(update, Var.valueOf("$.message.chat.id"));
 				conversationQuery = cronapi.database.Operations.query(Var.valueOf("app.entity.Conversation"),
 						Var.valueOf("select c from Conversation c where c.id = :id"), Var.valueOf("id", chatId));
-				watsonConversationVersionData = Var.valueOf("2018-04-19");
+				watsonConversationVersionData = Var.valueOf("2018-02-16");
 				watsonConversationUsername = Var.valueOf("b61c3c7a-cc63-4613-a747-57bdc1aa6f0e");
 				watsonConversationPassword = Var.valueOf("SQKxJGCToBB0");
 				userMessage = cronapi.object.Operations.getObjectField(update, Var.valueOf("$.message.text"));

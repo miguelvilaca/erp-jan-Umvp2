@@ -203,7 +203,7 @@
         <dependency>
             <groupId>io.cronapp</groupId>
             <artifactId>cronapi-java</artifactId>
-            <version>0.0.152-d-s-b</version>
+            <version>0.0.154-d-s-b</version>
         </dependency>
     </dependencies>
     <properties>
