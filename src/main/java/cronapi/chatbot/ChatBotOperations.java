@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 import cronapi.CronapiMetaData;
+import cronapi.Var;
 import cronapi.telegram.bots.TelegramBotOperations;
 import cronapi.telegram.bots.methods.SendMessage;
 import cronapi.telegram.bots.models.InlineKeyboardButton;
@@ -19,12 +20,16 @@ import java.util.Map;
 public class ChatBotOperations {
 
     @CronapiMetaData
-    public static void sendWatsonMessageToTelegram(MessageResponse watsonResponse, String telegramChatId,
-                                                   String telegramToken) throws IOException {
+    public static void sendWatsonMessageToTelegram(Var watsonResponseIn, Var telegramChatIdIn,
+                                                   Var telegramTokenIn) throws IOException {
+
+        MessageResponse watsonResponse = watsonResponseIn.getTypedObject(MessageResponse.class);
+        String telegramChatId = telegramChatIdIn.toString();
+        String telegramToken = telegramTokenIn.toString();
+
         SendMessage sendMessage = null;
 
-        for (String outputText: watsonResponse.getOutput().getText())
-        {
+        for (String outputText : watsonResponse.getOutput().getText()) {
             if (sendMessage != null)
                 TelegramBotOperations.sendMessage(sendMessage);
 
