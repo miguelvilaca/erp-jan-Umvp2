@@ -2,7 +2,6 @@ package blockly;
 
 import cronapi.*;
 import cronapi.rest.security.CronappSecurity;
-import java.lang.Math;
 import java.util.concurrent.Callable;
 
 @CronapiMetaData(type = "blockly")
@@ -35,15 +34,9 @@ public class TelegramUpdatesHandler {
 			private Var watsonMessage = Var.VAR_NULL;
 			private Var watsonText = Var.VAR_NULL;
 			private Var sysNumbers = Var.VAR_NULL;
-			private Var sysNumber = Var.VAR_NULL;
-			private Var pacienteQuery = Var.VAR_NULL;
-			private Var paciente = Var.VAR_NULL;
-			private Var unidadeQuery = Var.VAR_NULL;
-			private Var unidade = Var.VAR_NULL;
-			private Var especialidades = Var.VAR_NULL;
-			private Var especialidade = Var.VAR_NULL;
-			private Var agendas = Var.VAR_NULL;
-			private Var agenda = Var.VAR_NULL;
+			private Var sysRa = Var.VAR_NULL;
+			private Var jsonRa = Var.VAR_NULL;
+			private Var numeroRa = Var.VAR_NULL;
 
 			public Var call() throws Exception {
 				token = Var.valueOf("571514660:AAGG-86rVJlCKkN8-Oz1OFPoSrXZ8wJ7_KM");
@@ -77,70 +70,59 @@ public class TelegramUpdatesHandler {
 								com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions.class)));
 				watsonContext = cronapi.object.Operations.getObjectField(watsonMessage, Var.valueOf("$.context"));
 				watsonText = cronapi.object.Operations.getObjectField(watsonMessage, Var.valueOf("$.output.text[0]"));
-				if (Var.valueOf(watsonText.equals(Var.valueOf("_obterDadosCartaoHygia"))).getObjectAsBoolean()) {
+				if (Var.valueOf(watsonText.equals(Var.valueOf("_buscarRa"))).getObjectAsBoolean()) {
 					sysNumbers = cronapi.object.Operations.getObjectField(watsonMessage,
 							Var.valueOf("$.entities[?(@.entity==\'sys-number\')].value"));
-					sysNumber = cronapi.object.Operations.getObjectField(sysNumbers, Var.valueOf("this[0]"));
-					pacienteQuery = cronapi.database.Operations.query(Var.valueOf("diagram.hygia.entity.HyPacientes"),
-							Var.valueOf("select h from HyPacientes h where h.numpac = :numpac"),
-							Var.valueOf("numpac", sysNumber));
-					if (cronapi.database.Operations.hasElement(pacienteQuery).getObjectAsBoolean()) {
-						paciente = cronapi.database.Operations.getActiveData(pacienteQuery);
-						unidadeQuery = cronapi.database.Operations.query(Var.valueOf("diagram.hygia.entity.HyUnidsau"),
-								Var.valueOf("select u from HyUnidsau u where u.codunidsau = :codunidsau"),
-								Var.valueOf("codunidsau", cronapi.object.Operations.getObjectField(paciente,
-										Var.valueOf("usCodunidsau"))));
-						if (cronapi.database.Operations.hasElement(unidadeQuery).getObjectAsBoolean()) {
-							unidade = cronapi.database.Operations.getActiveData(unidadeQuery);
-							cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("unidade_preferencial"),
-									cronapi.object.Operations.getObjectField(unidade, Var.valueOf("nome")));
-						}
-						cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("nome_paciente"),
-								cronapi.object.Operations.getObjectField(paciente, Var.valueOf("nome")));
-						cronapi.map.Operations
-								.setMapFieldByKey(
-										watsonContext, Var
-												.valueOf(
-														"data_aleatoria"),
-										cronapi.dateTime.Operations
-												.formatDateTime(
-														cronapi.dateTime.Operations
-																.incMinute(cronapi.dateTime.Operations.getNow(),
-																		cronapi.math.Operations.randomInt(
-																				Var.valueOf(100), Var.valueOf(7200))),
-														Var.valueOf("dd/MM \'às\' HH\':00\'")));
+					sysRa = cronapi.object.Operations
+							.getObjectField(
+									cronapi.util.Operations
+											.getURLFromOthers(
+													Var.valueOf("GET"), Var
+															.valueOf(
+																	"application/json"),
+													Var.valueOf(Var
+															.valueOf(
+																	"https://fabrica1.lyceum.com.br/api/pessoas/cod_aluno/")
+															.toString()
+															+ cronapi.object.Operations
+																	.getObjectField(sysNumbers, Var.valueOf("this[0]"))
+																	.toString()
+															+ Var.valueOf("/obtemPessoaAluno").toString()),
+													Var.VAR_NULL, Var.VAR_NULL),
+									Var.valueOf("this[0]"));
+					jsonRa = Var.valueOf(
+							Var.valueOf("{\"aluno\":[").toString() + sysRa.toString() + Var.valueOf("]}").toString());
+					numeroRa = cronapi.json.Operations.getJsonOrMapField(jsonRa, Var.valueOf("$.aluno[0].valor"));
+					if (Var.valueOf(!numeroRa.equals(Var.valueOf(""))).getObjectAsBoolean()) {
+						inputData = cronapi.object.Operations.newObject(
+								Var.valueOf("com.ibm.watson.developer_cloud.conversation.v1.model.InputData"),
+								Var.valueOf("text", Var.valueOf("#RA")));
+						watsonMessageOptions = cronapi.object.Operations.newObject(
+								Var.valueOf("com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions"),
+								Var.valueOf("workspaceId", workspaceId), Var.valueOf("input", inputData),
+								Var.valueOf("context", watsonContext));
+						watsonMessage = Var.valueOf(cronapi.watson.conversation.ConversationOperations.message(
+								watsonConversationVersionData.getTypedObject(java.lang.String.class),
+								watsonConversationUsername.getTypedObject(java.lang.String.class),
+								watsonConversationPassword.getTypedObject(java.lang.String.class),
+								Var.VAR_NULL.getTypedObject(java.lang.String.class),
+								Var.VAR_NULL.getTypedObject(java.util.Map.class), watsonMessageOptions.getTypedObject(
+										com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions.class)));
+						watsonContext = cronapi.object.Operations.getObjectField(watsonMessage,
+								Var.valueOf("$.context"));
+						watsonText = cronapi.object.Operations.getObjectField(watsonMessage,
+								Var.valueOf("$.output.text[0]"));
+						Var.valueOf(cronapi.telegram.bots.TelegramBotOperations.sendMessage(cronapi.object.Operations
+								.newObject(Var.valueOf("cronapi.telegram.bots.methods.SendMessage"),
+										Var.valueOf("chatId", chatId), Var.valueOf("text", watsonText),
+										Var.valueOf("replyMarkup", Var.VAR_NULL), Var.valueOf("token", token))
+								.getTypedObject(cronapi.telegram.bots.methods.SendMessage.class)));
 					}
-					inputData = cronapi.object.Operations.newObject(
-							Var.valueOf("com.ibm.watson.developer_cloud.conversation.v1.model.InputData"),
-							Var.valueOf("text", Var.valueOf("")));
-					watsonMessageOptions = cronapi.object.Operations.newObject(
-							Var.valueOf("com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions"),
-							Var.valueOf("workspaceId", workspaceId), Var.valueOf("input", inputData),
-							Var.valueOf("context", watsonContext));
-					watsonMessage = Var.valueOf(cronapi.watson.conversation.ConversationOperations.message(
-							watsonConversationVersionData.getTypedObject(java.lang.String.class),
-							watsonConversationUsername.getTypedObject(java.lang.String.class),
-							watsonConversationPassword.getTypedObject(java.lang.String.class),
-							Var.VAR_NULL.getTypedObject(java.lang.String.class),
-							Var.VAR_NULL.getTypedObject(java.util.Map.class), watsonMessageOptions.getTypedObject(
-									com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions.class)));
-					watsonContext = cronapi.object.Operations.getObjectField(watsonMessage, Var.valueOf("$.context"));
-					watsonText = cronapi.object.Operations.getObjectField(watsonMessage,
-							Var.valueOf("$.output.text[0]"));
 				} else if (Var.valueOf(watsonText.equals(Var.valueOf("_obterAgendaSugerida"))).getObjectAsBoolean()) {
-					especialidades = cronapi.object.Operations.getObjectField(watsonMessage,
-							Var.valueOf("$.entities[?(@.entity==\'MEDICOS\')].value"));
-					especialidade = cronapi.object.Operations.getObjectField(especialidades, Var.valueOf("this[0]"));
-					agendas = cronapi.database.Operations.query(Var.valueOf("diagram.hygia.entity.HyVwAgprofisdisp"),
-							Var.valueOf(
-									"select a.horaini, a.horafim, a.nomeprofis, a.nomeus, a.data from HyVwAgprofisdisp a where a.nomeespec = :nomeespec AND a.data >= :data"),
-							Var.valueOf("nomeespec", especialidade),
-							Var.valueOf("data", cronapi.dateTime.Operations.getNow()));
-					if (cronapi.database.Operations.hasElement(agendas).getObjectAsBoolean()) {
-						agenda = cronapi.database.Operations.getActiveData(agendas);
-						cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("unidade_preferencial"),
-								cronapi.object.Operations.getObjectField(unidade, Var.valueOf("nome")));
+					{
 					}
+				} else {
+					cronapi.chatbot.ChatBotOperations.sendWatsonMessageToTelegram(watsonMessage, chatId, token);
 				}
 				if (cronapi.logic.Operations.isNullOrEmpty(conversation).getObjectAsBoolean()) {
 					conversation = cronapi.object.Operations.newObject(Var.valueOf("app.entity.Conversation"),
@@ -150,11 +132,6 @@ public class TelegramUpdatesHandler {
 					cronapi.object.Operations.setObjectField(conversation, Var.valueOf("context"), watsonContext);
 					cronapi.database.Operations.update(Var.valueOf("app.entity.Conversation"), conversation);
 				}
-				Var.valueOf(cronapi.telegram.bots.TelegramBotOperations.sendMessage(cronapi.object.Operations
-						.newObject(Var.valueOf("cronapi.telegram.bots.methods.SendMessage"),
-								Var.valueOf("chatId", chatId), Var.valueOf("text", watsonText),
-								Var.valueOf("token", token))
-						.getTypedObject(cronapi.telegram.bots.methods.SendMessage.class)));
 				return Var.VAR_NULL;
 			}
 		}.call();
