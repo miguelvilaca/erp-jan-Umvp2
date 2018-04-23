@@ -47,7 +47,10 @@ public class TelegramUpdatesHandler {
 				watsonConversationVersionData = Var.valueOf("2018-02-16");
 				watsonConversationUsername = Var.valueOf("b61c3c7a-cc63-4613-a747-57bdc1aa6f0e");
 				watsonConversationPassword = Var.valueOf("SQKxJGCToBB0");
-				userMessage = cronapi.object.Operations.getObjectField(update, Var.valueOf("$.message.text"));
+				userMessage = cronapi.object.Operations.getObjectField(update, Var.valueOf("callbackQuery.data"));
+				if (cronapi.logic.Operations.isNullOrEmpty(userMessage).getObjectAsBoolean()) {
+					userMessage = cronapi.object.Operations.getObjectField(update, Var.valueOf("$.message.text"));
+				}
 				if (cronapi.database.Operations.hasElement(conversationQuery).getObjectAsBoolean()) {
 					conversation = cronapi.database.Operations.getActiveData(conversationQuery);
 					watsonContext = cronapi.object.Operations.getObjectField(conversation, Var.valueOf("context"));
@@ -95,6 +98,13 @@ public class TelegramUpdatesHandler {
 					numeroRa = cronapi.json.Operations.getJsonOrMapField(jsonRa, Var.valueOf("$.aluno[0].valor"));
 					if (Var.valueOf(!numeroRa.equals(Var.valueOf(""))).getObjectAsBoolean()) {
 						cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("numero_ra"), numeroRa);
+						inputData = cronapi.object.Operations.newObject(
+								Var.valueOf("com.ibm.watson.developer_cloud.conversation.v1.model.InputData"),
+								Var.valueOf("text", Var.valueOf("")));
+						watsonMessageOptions = cronapi.object.Operations.newObject(
+								Var.valueOf("com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions"),
+								Var.valueOf("workspaceId", workspaceId), Var.valueOf("input", inputData),
+								Var.valueOf("context", watsonContext));
 						watsonMessage = Var.valueOf(cronapi.watson.conversation.ConversationOperations.message(
 								watsonConversationVersionData.getTypedObject(java.lang.String.class),
 								watsonConversationUsername.getTypedObject(java.lang.String.class),
