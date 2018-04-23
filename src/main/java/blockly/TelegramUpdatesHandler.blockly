@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><blockly formTarget="" resourceType="JAVA" ruleDescription="TelegramUpdatesHandler" ruleName="TelegramUpdatesHandler" ruleSynchronous="false" ruleTimeout="" ruleType="I">
-  <metadata scale="1" scrollx="419.995967489831" scrolly="-1708.6551581425422" target="Anb:u5+^,0vLkL9QIqn5"/>
-  <block colour="#995ba5" id="Anb:u5+^,0vLkL9QIqn5" origintype="procedures_defreturn" output="false" tooltip="Cria uma função que possui um valor de retorno." type="procedures_defreturn" x="-350" y="130">
+  <metadata scale="1" scrollx="419.99596748983083" scrolly="-1856.0000000000016" target="Anb:u5+^,0vLkL9QIqn5"/>
+  <block colour="#995ba5" id="Anb:u5+^,0vLkL9QIqn5" origintype="procedures_defreturn" output="false" tooltip="Cria uma função que possui um valor de retorno." type="procedures_defreturn" x="-312" y="169">
     <mutation>
       <arg name="update"/>
     </mutation>
@@ -515,6 +515,103 @@
                                                                                             <field name="VAR">numeroRa</field>
                                                                                           </block>
                                                                                         </value>
+                                                                                        <next>
+                                                                                          <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="Upfr@UXpiRrY?VvalQi;" origintype="variables_set" output="false" tooltip="Define esta variável para o valor da entrada." type="variables_set">
+                                                                                            <field name="VAR">watsonMessage</field>
+                                                                                            <value name="VALUE">
+                                                                                              <block colour="#995ba5" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="|mkx@%ad`-/)d@t$S0(q" multilayer="false" namespace="cronapi.watson.conversation.ConversationOperations.message" origintype="procedures_callreturn" output="true" returntype="ObjectType.VOID" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EEnvia%20mensagem%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EObtenha%20uma%20resposta%20para%20a%20entrada%20de%20um%20usu%C3%A1rio.%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20A%20data%20da%20vers%C3%A3o%20da%20API%20REST.%20:%20Texto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Nome%20do%20usu%C3%A1rio%20:%20Texto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20A%20senha%20:%20Texto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20O%20novo%20endPoint%20da%20API.%20:%20Texto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Nome%20do%20cabe%C3%A7alho%20que%20ser%C3%A1%20usado%20na%20requisi%C3%A7%C3%A3o%20HTTP.%20:%20Mapa%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Op%C3%A7%C3%B5es%20do%20envia%20mensagem.%20Saiba%20mais%20:%20Objeto%3C/span%3E%3Cdiv%3E%20https://www.ibm.com/watson/developercloud/conversation/api/v1/#send_message%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Sem%20retorno%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.watson.conversation.ConversationOperations.message%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.watson.conversation.ConversationOperations.message%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_callreturn">
+                                                                                                <mutation name="{{cronapi.watson.conversation.ConversationOperations.message}}" return-raw-type="com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse">
+                                                                                                  <arg cronapi-raw-type="java.lang.String" cronapi-type="ObjectType.STRING" name="A data da versão da API REST."/>
+                                                                                                  <arg cronapi-raw-type="java.lang.String" cronapi-type="ObjectType.STRING" name="Nome do usuário"/>
+                                                                                                  <arg cronapi-raw-type="java.lang.String" cronapi-type="ObjectType.STRING" name="A senha"/>
+                                                                                                  <arg cronapi-raw-type="java.lang.String" cronapi-type="ObjectType.STRING" name="O novo endPoint da API."/>
+                                                                                                  <arg cronapi-raw-type="java.util.Map" cronapi-type="ObjectType.MAP" name="Nome do cabeçalho que será usado na requisição HTTP."/>
+                                                                                                  <arg cronapi-raw-type="com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions" cronapi-type="ObjectType.OBJECT" name="Opções do envia mensagem. Saiba mais"/>
+                                                                                                </mutation>
+                                                                                                <value name="ARG0">
+                                                                                                  <shadow colour="#5ba593" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="Uil!T!Q(O:}9|!FpV^{n" origintype="text" output="true" tooltip="function () { [native code] }" type="text" xmlns="">
+                                                                                                    <field name="TEXT"/>
+                                                                                                  </shadow>
+                                                                                                  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="_fE%[y;P7Nwy_FSZ(0$i" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                                                    <field name="VAR">watsonConversationVersionData</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="ARG1">
+                                                                                                  <shadow colour="#5ba593" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="yxD^9ygYfBk[5`dis?j/" origintype="text" output="true" tooltip="function () { [native code] }" type="text" xmlns="">
+                                                                                                    <field name="TEXT"/>
+                                                                                                  </shadow>
+                                                                                                  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="}tqu-SMNr/AstQt9ovJg" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                                                    <field name="VAR">watsonConversationUsername</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="ARG2">
+                                                                                                  <shadow colour="#5ba593" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="~Y,@QbOl%s_%xSCSf[uU" origintype="text" output="true" tooltip="function () { [native code] }" type="text" xmlns="">
+                                                                                                    <field name="TEXT"/>
+                                                                                                  </shadow>
+                                                                                                  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="W5;E6)H[1`r7SZvoi(H{" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                                                    <field name="VAR">watsonConversationPassword</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="ARG3">
+                                                                                                  <shadow colour="#5ba593" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="nQ(Q*adJ+`:Su$lmNDpl" origintype="text" output="true" tooltip="function () { [native code] }" type="text">
+                                                                                                    <field name="TEXT"/>
+                                                                                                  </shadow>
+                                                                                                </value>
+                                                                                                <value name="ARG5">
+                                                                                                  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="n1bIX).-LjI(m;Z6L_-(" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                                                    <field name="VAR">watsonMessageOptions</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <next>
+                                                                                              <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="76,cABFMgavTHeM~9t()" origintype="variables_set" output="false" tooltip="Define esta variável para o valor da entrada." type="variables_set">
+                                                                                                <field name="VAR">watsonContext</field>
+                                                                                                <value name="VALUE">
+                                                                                                  <block colour="#404340" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="}}?$qWrO)r}-CB#$vqTx" multilayer="false" namespace="cronapi.object.Operations.getObjectField" origintype="procedures_get_field" output="true" returntype="ObjectType.OBJECT" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EObter%20campo%20do%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20para%20obter%20campo%20do%20Objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Objeto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Caminho%20a%20percorrer%20:%20Texto%3C/span%3E%3Cdiv%3E%20Exemplo:%20estado%5B3%5D.uf%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.getObjectField%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.getObjectField%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_get_field">
+                                                                                                    <mutation name="{{cronapi.object.Operations.getObjectField}}">
+                                                                                                      <arg name="Objeto"/>
+                                                                                                      <arg name="Caminho a percorrer"/>
+                                                                                                    </mutation>
+                                                                                                    <value name="PARAM0">
+                                                                                                      <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="yb]=qZ[Rdc*.zIcgSM2f" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                                                        <field name="VAR">watsonMessage</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                    <value name="PARAM1">
+                                                                                                      <block colour="#5ba593" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="G[ucjiu8b!24pRXS.xP[" origintype="text" output="true" tooltip="function () { [native code] }" type="text">
+                                                                                                        <field name="TEXT">$.context</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <next>
+                                                                                                  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="a}.wG$0K1`AfVrY#C(si" origintype="variables_set" output="false" tooltip="Define esta variável para o valor da entrada." type="variables_set">
+                                                                                                    <field name="VAR">watsonText</field>
+                                                                                                    <value name="VALUE">
+                                                                                                      <block colour="#404340" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="h.1^]JF01=+kgh5@q-u$" multilayer="false" namespace="cronapi.object.Operations.getObjectField" origintype="procedures_get_field" output="true" returntype="ObjectType.OBJECT" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EObter%20campo%20do%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20para%20obter%20campo%20do%20Objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Objeto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Caminho%20a%20percorrer%20:%20Texto%3C/span%3E%3Cdiv%3E%20Exemplo:%20estado%5B3%5D.uf%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.getObjectField%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.getObjectField%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_get_field">
+                                                                                                        <mutation name="{{cronapi.object.Operations.getObjectField}}">
+                                                                                                          <arg name="Objeto"/>
+                                                                                                          <arg name="Caminho a percorrer"/>
+                                                                                                        </mutation>
+                                                                                                        <value name="PARAM0">
+                                                                                                          <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="X})e~mRWdN}0t1!rBHJ~" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                                                            <field name="VAR">watsonMessage</field>
+                                                                                                          </block>
+                                                                                                        </value>
+                                                                                                        <value name="PARAM1">
+                                                                                                          <block colour="#5ba593" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="_x3:)y0a/%wLs++z@jto" origintype="text" output="true" tooltip="function () { [native code] }" type="text">
+                                                                                                            <field name="TEXT">$.output.text[0]</field>
+                                                                                                          </block>
+                                                                                                        </value>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </next>
+                                                                                              </block>
+                                                                                            </next>
+                                                                                          </block>
+                                                                                        </next>
                                                                                       </block>
                                                                                     </statement>
                                                                                   </block>
@@ -542,7 +639,7 @@
                                                                     </value>
                                                                   </block>
                                                                 </value>
-                                                                <statement name="ELSE">
+                                                                <next>
                                                                   <block colour="#995ba5" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="d:AwLX8dzR@g:[y8nNrf" multilayer="false" namespace="cronapi.chatbot.ChatBotOperations.sendWatsonMessageToTelegram" origintype="procedures_callnoreturn" output="false" returntype="ObjectType.VOID" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3Ecronapi.chatbot.ChatBotOperations.Method.sendWatsonMessageToTelegram.Name%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3Ecronapi.chatbot.ChatBotOperations.Method.sendWatsonMessageToTelegram.Description%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20cronapi.chatbot.ChatBotOperations.Method.sendWatsonMessageToTelegram.Parameter.watsonResponseIn.Description%20:%20Objeto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20cronapi.chatbot.ChatBotOperations.Method.sendWatsonMessageToTelegram.Parameter.telegramChatIdIn.Description%20:%20Objeto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20cronapi.chatbot.ChatBotOperations.Method.sendWatsonMessageToTelegram.Parameter.telegramTokenIn.Description%20:%20Objeto%3C/span%3E%3Cbr%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.chatbot.ChatBotOperations.sendWatsonMessageToTelegram%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.chatbot.ChatBotOperations.sendWatsonMessageToTelegram%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_callnoreturn">
                                                                     <mutation name="{{cronapi.chatbot.ChatBotOperations.sendWatsonMessageToTelegram}}" return-raw-type="void">
                                                                       <arg cronapi-raw-type="Var" cronapi-type="ObjectType.OBJECT" name="cronapi.chatbot.ChatBotOperations.Method.sendWatsonMessageToTelegram.Parameter.watsonResponseIn.Description"/>
@@ -564,94 +661,94 @@
                                                                         <field name="VAR">token</field>
                                                                       </block>
                                                                     </value>
-                                                                  </block>
-                                                                </statement>
-                                                                <next>
-                                                                  <block colour="#5b80a5" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="RiFJr7+|_FzLczEs}y~8" origintype="controls_if" output="false" tooltip="function () { [native code] }" type="controls_if">
-                                                                    <mutation else="1"/>
-                                                                    <value name="IF0">
-                                                                      <block colour="#5b80a5" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="JzK[dzZJC6)x-C8tSdx|" inline="true" multilayer="false" namespace="cronapi.logic.Operations.isNullOrEmpty" origintype="procedures_callreturn" output="true" returntype="ObjectType.BOOLEAN" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3E%C3%A9%20nulo%20ou%20vazio?%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20verifica%20se%20a%20var%C3%ADavel%20%C3%A9%20nula%20ou%20vazia%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Par%C3%A2metro%20:%20Objeto%3C/span%3E%3Cbr%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20L%C3%B3gico%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.logic.Operations.isNullOrEmpty%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.logic.Operations.isNullOrEmpty%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_callreturn">
-                                                                        <mutation name="{{cronapi.logic.Operations.isNullOrEmpty}}" return-raw-type="cronapi.Var">
-                                                                          <arg cronapi-raw-type="cronapi.Var" cronapi-type="ObjectType.OBJECT" name="Parâmetro"/>
-                                                                        </mutation>
-                                                                        <value name="ARG0">
-                                                                          <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="QB6+f=v?Gx(;NI^80`ji" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
-                                                                            <field name="VAR">conversation</field>
-                                                                          </block>
-                                                                        </value>
-                                                                      </block>
-                                                                    </value>
-                                                                    <statement name="DO0">
-                                                                      <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="?s%*^o*]d0e-*f2P%SJf" origintype="variables_set" output="false" tooltip="Define esta variável para o valor da entrada." type="variables_set">
-                                                                        <field name="VAR">conversation</field>
-                                                                        <value name="VALUE">
-                                                                          <block colour="#404340" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="*=@6fnw|4]Y1;RK}:WVV" multilayer="false" namespace="cronapi.object.Operations.newObject" origintype="procedures_createnewobject_callreturn" output="true" returntype="ObjectType.OBJECT" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3ECriar%20novo%20objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20cria%20um%20novo%20objeto%20%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Texto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Par%C3%A2metros%20:%20Mapa%3C/span%3E%3Cdiv%3E%20Par%C3%A2metros%20a%20serem%20passados%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.newObject%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.newObject%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_createnewobject_callreturn">
-                                                                            <mutation data="%7B%22entity%22:%22app.entity.Conversation%22,%22entityFullName%22:%22app.entity.Conversation%22,%22params%22:%22%5B%5C%22id%5C%22,%5C%22context%5C%22%5D%22,%22paramTypes%22:%22%5B%5C%22undefined%5C%22,%5C%22undefined%5C%22%5D%22,%22type%22:%22F%22%7D" name="{{cronapi.object.Operations.newObject}}">
-                                                                              <arg name="id"/>
-                                                                              <arg name="context"/>
+                                                                    <next>
+                                                                      <block colour="#5b80a5" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="RiFJr7+|_FzLczEs}y~8" origintype="controls_if" output="false" tooltip="function () { [native code] }" type="controls_if">
+                                                                        <mutation else="1"/>
+                                                                        <value name="IF0">
+                                                                          <block colour="#5b80a5" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="JzK[dzZJC6)x-C8tSdx|" inline="true" multilayer="false" namespace="cronapi.logic.Operations.isNullOrEmpty" origintype="procedures_callreturn" output="true" returntype="ObjectType.BOOLEAN" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3E%C3%A9%20nulo%20ou%20vazio?%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20verifica%20se%20a%20var%C3%ADavel%20%C3%A9%20nula%20ou%20vazia%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Par%C3%A2metro%20:%20Objeto%3C/span%3E%3Cbr%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20L%C3%B3gico%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.logic.Operations.isNullOrEmpty%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.logic.Operations.isNullOrEmpty%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_callreturn">
+                                                                            <mutation name="{{cronapi.logic.Operations.isNullOrEmpty}}" return-raw-type="cronapi.Var">
+                                                                              <arg cronapi-raw-type="cronapi.Var" cronapi-type="ObjectType.OBJECT" name="Parâmetro"/>
                                                                             </mutation>
                                                                             <value name="ARG0">
-                                                                              <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="4IS#bit|pz%xhYO7y?vD" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
-                                                                                <field name="VAR">chatId</field>
+                                                                              <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="QB6+f=v?Gx(;NI^80`ji" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                                <field name="VAR">conversation</field>
                                                                               </block>
                                                                             </value>
-                                                                            <value name="ARG1">
-                                                                              <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="WqD=F5AB[$Ss0iAO`+Z1" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                          </block>
+                                                                        </value>
+                                                                        <statement name="DO0">
+                                                                          <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="?s%*^o*]d0e-*f2P%SJf" origintype="variables_set" output="false" tooltip="Define esta variável para o valor da entrada." type="variables_set">
+                                                                            <field name="VAR">conversation</field>
+                                                                            <value name="VALUE">
+                                                                              <block colour="#404340" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="*=@6fnw|4]Y1;RK}:WVV" multilayer="false" namespace="cronapi.object.Operations.newObject" origintype="procedures_createnewobject_callreturn" output="true" returntype="ObjectType.OBJECT" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3ECriar%20novo%20objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20cria%20um%20novo%20objeto%20%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Texto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Par%C3%A2metros%20:%20Mapa%3C/span%3E%3Cdiv%3E%20Par%C3%A2metros%20a%20serem%20passados%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.newObject%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.newObject%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_createnewobject_callreturn">
+                                                                                <mutation data="%7B%22entity%22:%22app.entity.Conversation%22,%22entityFullName%22:%22app.entity.Conversation%22,%22params%22:%22%5B%5C%22id%5C%22,%5C%22context%5C%22%5D%22,%22paramTypes%22:%22%5B%5C%22undefined%5C%22,%5C%22undefined%5C%22%5D%22,%22type%22:%22F%22%7D" name="{{cronapi.object.Operations.newObject}}">
+                                                                                  <arg name="id"/>
+                                                                                  <arg name="context"/>
+                                                                                </mutation>
+                                                                                <value name="ARG0">
+                                                                                  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="4IS#bit|pz%xhYO7y?vD" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                                    <field name="VAR">chatId</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="ARG1">
+                                                                                  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="WqD=F5AB[$Ss0iAO`+Z1" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                                    <field name="VAR">watsonContext</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                            <next>
+                                                                              <block colour="#db802b" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="/A(q?4qC:4IfM_h54H@S" multilayer="false" namespace="cronapi.database.Operations.insert" origintype="procedures_sql_insert_callnoreturn" output="false" returntype="ObjectType.VOID" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EInserir%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20cria%20um%20novo%20registro%20no%20banco%20de%20dados%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Fonte%20de%20dados%20:%20Tabela%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Par%C3%A2metros%20:%20Lista%3C/span%3E%3Cdiv%3E%20Par%C3%A2metros%20a%20serem%20passados%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.database.Operations.insert%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.database.Operations.insert%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_sql_insert_callnoreturn">
+                                                                                <mutation data="%7B%22queryBuilderJson%22:%7B%22isValid%22:true,%22isEmpty%22:false,%22operationType%22:%22object%22,%22type%22:%22insert%22,%22rulesEntity%22:%5B%7B%22entity%22:%22Conversation%22,%22namespace%22:%22app.entity.Conversation%22,%22alias%22:%22%22%7D%5D,%22rulesSelect%22:%5B%5D,%22rulesGroupBy%22:%5B%5D,%22rulesHaving%22:%5B%5D,%22rulesOrderBy%22:%5B%5D,%22isRawSql%22:false,%22multiTenant%22:true,%22paginatorAutomatic%22:false%7D,%22entity%22:%22Conversation%22,%22entityFullName%22:%22app.entity.Conversation%22,%22type%22:%22O%22,%22params%22:%22%5B%20%5C%22Conversation%5C%22%20%5D%22%7D" name="{{cronapi.database.Operations.insert}}">
+                                                                                  <arg name="Conversation"/>
+                                                                                </mutation>
+                                                                                <value name="ARG0">
+                                                                                  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="[YrS_s/xCUq#N`#u;XqK" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                                    <field name="VAR">conversation</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </next>
+                                                                          </block>
+                                                                        </statement>
+                                                                        <statement name="ELSE">
+                                                                          <block colour="#404340" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="/h^4uZ0f0@1-z827d^g]" multilayer="false" namespace="cronapi.object.Operations.setObjectField" origintype="procedures_set_field" output="false" returntype="ObjectType.VOID" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EDefine%20valor%20do%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20para%20definir%20campo%20do%20objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Objeto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Caminho%20a%20percorrer%20:%20Texto%3C/span%3E%3Cdiv%3E%20Exemplo:%20estado%5B3%5D.uf%3C/div%3E%3Cspan%3E%20-%20Valor%20a%20ser%20definido%20no%20objeto%20:%20Objeto%3C/span%3E%3Cbr%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.setObjectField%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.setObjectField%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_set_field">
+                                                                            <mutation name="{{cronapi.object.Operations.setObjectField}}">
+                                                                              <arg name="Objeto"/>
+                                                                              <arg name="Caminho a percorrer"/>
+                                                                              <arg name="Valor a ser definido no objeto"/>
+                                                                            </mutation>
+                                                                            <value name="PARAM0">
+                                                                              <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="1}wCf^f9+jCk8zn9Y4kr" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                                <field name="VAR">conversation</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="PARAM1">
+                                                                              <block colour="#5ba593" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="QH%,42}ROF:]@N^uTxlU" origintype="text" output="true" tooltip="function () { [native code] }" type="text">
+                                                                                <field name="TEXT">context</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="PARAM2">
+                                                                              <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="Y-Ya1:{N?.HjPDNng]yP" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
                                                                                 <field name="VAR">watsonContext</field>
                                                                               </block>
                                                                             </value>
-                                                                          </block>
-                                                                        </value>
-                                                                        <next>
-                                                                          <block colour="#db802b" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="/A(q?4qC:4IfM_h54H@S" multilayer="false" namespace="cronapi.database.Operations.insert" origintype="procedures_sql_insert_callnoreturn" output="false" returntype="ObjectType.VOID" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EInserir%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20cria%20um%20novo%20registro%20no%20banco%20de%20dados%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Fonte%20de%20dados%20:%20Tabela%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Par%C3%A2metros%20:%20Lista%3C/span%3E%3Cdiv%3E%20Par%C3%A2metros%20a%20serem%20passados%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.database.Operations.insert%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.database.Operations.insert%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_sql_insert_callnoreturn">
-                                                                            <mutation data="%7B%22queryBuilderJson%22:%7B%22isValid%22:true,%22isEmpty%22:false,%22operationType%22:%22object%22,%22type%22:%22insert%22,%22rulesEntity%22:%5B%7B%22entity%22:%22Conversation%22,%22namespace%22:%22app.entity.Conversation%22,%22alias%22:%22%22%7D%5D,%22rulesSelect%22:%5B%5D,%22rulesGroupBy%22:%5B%5D,%22rulesHaving%22:%5B%5D,%22rulesOrderBy%22:%5B%5D,%22isRawSql%22:false,%22multiTenant%22:true,%22paginatorAutomatic%22:false%7D,%22entity%22:%22Conversation%22,%22entityFullName%22:%22app.entity.Conversation%22,%22type%22:%22O%22,%22params%22:%22%5B%20%5C%22Conversation%5C%22%20%5D%22%7D" name="{{cronapi.database.Operations.insert}}">
-                                                                              <arg name="Conversation"/>
-                                                                            </mutation>
-                                                                            <value name="ARG0">
-                                                                              <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="[YrS_s/xCUq#N`#u;XqK" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
-                                                                                <field name="VAR">conversation</field>
+                                                                            <next>
+                                                                              <block colour="#db802b" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="J$)]3XDobc2RaaWT,|MO" multilayer="false" namespace="cronapi.database.Operations.update" origintype="procedures_sql_update_callnoreturn" output="false" returntype="ObjectType.VOID" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EAtualizar%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20atualiza%20um%20registro%20no%20banco%20de%20dados%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Fonte%20de%20dados%20:%20Tabela%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Entidade%20:%20Objeto%3C/span%3E%3Cbr%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.database.Operations.update%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.database.Operations.update%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_sql_update_callnoreturn">
+                                                                                <mutation data="%7B%22queryBuilderJson%22:%7B%22isValid%22:true,%22isEmpty%22:false,%22operationType%22:%22object%22,%22type%22:%22update%22,%22rulesEntity%22:%5B%7B%22entity%22:%22Conversation%22,%22namespace%22:%22app.entity.Conversation%22,%22alias%22:%22%22%7D%5D,%22rulesSelect%22:%5B%5D,%22rulesGroupBy%22:%5B%5D,%22rulesHaving%22:%5B%5D,%22rulesOrderBy%22:%5B%5D,%22rules%22:%7B%22condition%22:%22AND%22,%22rules%22:%5B%5D,%22not%22:false,%22valid%22:true%7D,%22isRawSql%22:false,%22multiTenant%22:true,%22paginatorAutomatic%22:false%7D,%22entity%22:%22Conversation%22,%22entityFullName%22:%22app.entity.Conversation%22,%22filter%22:%22update%20Conversation%20set%22,%22type%22:%22O%22,%22params%22:%22%5B%20%5C%22Conversation%5C%22%20%5D%22%7D" name="{{cronapi.database.Operations.update}}">
+                                                                                  <arg name="Conversation"/>
+                                                                                </mutation>
+                                                                                <value name="ARG0">
+                                                                                  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="#p]~PhIxQk22F;M=%~TQ" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                                                    <field name="VAR">conversation</field>
+                                                                                  </block>
+                                                                                </value>
                                                                               </block>
-                                                                            </value>
+                                                                            </next>
                                                                           </block>
-                                                                        </next>
+                                                                        </statement>
                                                                       </block>
-                                                                    </statement>
-                                                                    <statement name="ELSE">
-                                                                      <block colour="#404340" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="/h^4uZ0f0@1-z827d^g]" multilayer="false" namespace="cronapi.object.Operations.setObjectField" origintype="procedures_set_field" output="false" returntype="ObjectType.VOID" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EDefine%20valor%20do%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20para%20definir%20campo%20do%20objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Objeto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Caminho%20a%20percorrer%20:%20Texto%3C/span%3E%3Cdiv%3E%20Exemplo:%20estado%5B3%5D.uf%3C/div%3E%3Cspan%3E%20-%20Valor%20a%20ser%20definido%20no%20objeto%20:%20Objeto%3C/span%3E%3Cbr%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.setObjectField%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.setObjectField%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_set_field">
-                                                                        <mutation name="{{cronapi.object.Operations.setObjectField}}">
-                                                                          <arg name="Objeto"/>
-                                                                          <arg name="Caminho a percorrer"/>
-                                                                          <arg name="Valor a ser definido no objeto"/>
-                                                                        </mutation>
-                                                                        <value name="PARAM0">
-                                                                          <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="1}wCf^f9+jCk8zn9Y4kr" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
-                                                                            <field name="VAR">conversation</field>
-                                                                          </block>
-                                                                        </value>
-                                                                        <value name="PARAM1">
-                                                                          <block colour="#5ba593" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="QH%,42}ROF:]@N^uTxlU" origintype="text" output="true" tooltip="function () { [native code] }" type="text">
-                                                                            <field name="TEXT">context</field>
-                                                                          </block>
-                                                                        </value>
-                                                                        <value name="PARAM2">
-                                                                          <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="Y-Ya1:{N?.HjPDNng]yP" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
-                                                                            <field name="VAR">watsonContext</field>
-                                                                          </block>
-                                                                        </value>
-                                                                        <next>
-                                                                          <block colour="#db802b" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="J$)]3XDobc2RaaWT,|MO" multilayer="false" namespace="cronapi.database.Operations.update" origintype="procedures_sql_update_callnoreturn" output="false" returntype="ObjectType.VOID" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EAtualizar%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20atualiza%20um%20registro%20no%20banco%20de%20dados%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Fonte%20de%20dados%20:%20Tabela%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Entidade%20:%20Objeto%3C/span%3E%3Cbr%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.database.Operations.update%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.database.Operations.update%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_sql_update_callnoreturn">
-                                                                            <mutation data="%7B%22queryBuilderJson%22:%7B%22isValid%22:true,%22isEmpty%22:false,%22operationType%22:%22object%22,%22type%22:%22update%22,%22rulesEntity%22:%5B%7B%22entity%22:%22Conversation%22,%22namespace%22:%22app.entity.Conversation%22,%22alias%22:%22%22%7D%5D,%22rulesSelect%22:%5B%5D,%22rulesGroupBy%22:%5B%5D,%22rulesHaving%22:%5B%5D,%22rulesOrderBy%22:%5B%5D,%22rules%22:%7B%22condition%22:%22AND%22,%22rules%22:%5B%5D,%22not%22:false,%22valid%22:true%7D,%22isRawSql%22:false,%22multiTenant%22:true,%22paginatorAutomatic%22:false%7D,%22entity%22:%22Conversation%22,%22entityFullName%22:%22app.entity.Conversation%22,%22filter%22:%22update%20Conversation%20set%22,%22type%22:%22O%22,%22params%22:%22%5B%20%5C%22Conversation%5C%22%20%5D%22%7D" name="{{cronapi.database.Operations.update}}">
-                                                                              <arg name="Conversation"/>
-                                                                            </mutation>
-                                                                            <value name="ARG0">
-                                                                              <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="#p]~PhIxQk22F;M=%~TQ" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
-                                                                                <field name="VAR">conversation</field>
-                                                                              </block>
-                                                                            </value>
-                                                                          </block>
-                                                                        </next>
-                                                                      </block>
-                                                                    </statement>
+                                                                    </next>
                                                                   </block>
                                                                 </next>
                                                               </block>
@@ -685,7 +782,7 @@
       </block>
     </statement>
   </block>
-  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="a)IWv_fpD+zyn%_2G%jk" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get" x="55" y="1398">
+  <block colour="#a55b80" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="-7;1b8B!d7Z`dqwZ^i/R" origintype="variables_set" output="false" tooltip="Define esta variável para o valor da entrada." type="variables_set" x="-292" y="1178">
     <field name="VAR">watsonMessage</field>
   </block>
 </blockly>

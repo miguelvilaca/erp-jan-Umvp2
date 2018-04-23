@@ -95,13 +95,26 @@ public class TelegramUpdatesHandler {
 					numeroRa = cronapi.json.Operations.getJsonOrMapField(jsonRa, Var.valueOf("$.aluno[0].valor"));
 					if (Var.valueOf(!numeroRa.equals(Var.valueOf(""))).getObjectAsBoolean()) {
 						cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("numero_ra"), numeroRa);
+						watsonMessage = Var.valueOf(cronapi.watson.conversation.ConversationOperations.message(
+								watsonConversationVersionData.getTypedObject(java.lang.String.class),
+								watsonConversationUsername.getTypedObject(java.lang.String.class),
+								watsonConversationPassword.getTypedObject(java.lang.String.class),
+								Var.VAR_NULL.getTypedObject(java.lang.String.class),
+								Var.VAR_NULL.getTypedObject(java.util.Map.class), watsonMessageOptions.getTypedObject(
+										com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions.class)));
+						watsonContext = cronapi.object.Operations.getObjectField(watsonMessage,
+								Var.valueOf("$.context"));
+						watsonText = cronapi.object.Operations.getObjectField(watsonMessage,
+								Var.valueOf("$.output.text[0]"));
 					}
 				} else if (Var.valueOf(watsonText.equals(Var.valueOf("_obterAgendaSugerida"))).getObjectAsBoolean()) {
 					{
 					}
 				} else {
-					cronapi.chatbot.ChatBotOperations.sendWatsonMessageToTelegram(watsonMessage, chatId, token);
+					{
+					}
 				}
+				cronapi.chatbot.ChatBotOperations.sendWatsonMessageToTelegram(watsonMessage, chatId, token);
 				if (cronapi.logic.Operations.isNullOrEmpty(conversation).getObjectAsBoolean()) {
 					conversation = cronapi.object.Operations.newObject(Var.valueOf("app.entity.Conversation"),
 							Var.valueOf("id", chatId), Var.valueOf("context", watsonContext));
