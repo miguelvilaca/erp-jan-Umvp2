@@ -94,29 +94,7 @@ public class TelegramUpdatesHandler {
 							Var.valueOf("{\"aluno\":[").toString() + sysRa.toString() + Var.valueOf("]}").toString());
 					numeroRa = cronapi.json.Operations.getJsonOrMapField(jsonRa, Var.valueOf("$.aluno[0].valor"));
 					if (Var.valueOf(!numeroRa.equals(Var.valueOf(""))).getObjectAsBoolean()) {
-						inputData = cronapi.object.Operations.newObject(
-								Var.valueOf("com.ibm.watson.developer_cloud.conversation.v1.model.InputData"),
-								Var.valueOf("text", Var.valueOf("#RA")));
-						watsonMessageOptions = cronapi.object.Operations.newObject(
-								Var.valueOf("com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions"),
-								Var.valueOf("workspaceId", workspaceId), Var.valueOf("input", inputData),
-								Var.valueOf("context", watsonContext));
-						watsonMessage = Var.valueOf(cronapi.watson.conversation.ConversationOperations.message(
-								watsonConversationVersionData.getTypedObject(java.lang.String.class),
-								watsonConversationUsername.getTypedObject(java.lang.String.class),
-								watsonConversationPassword.getTypedObject(java.lang.String.class),
-								Var.VAR_NULL.getTypedObject(java.lang.String.class),
-								Var.VAR_NULL.getTypedObject(java.util.Map.class), watsonMessageOptions.getTypedObject(
-										com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions.class)));
-						watsonContext = cronapi.object.Operations.getObjectField(watsonMessage,
-								Var.valueOf("$.context"));
-						watsonText = cronapi.object.Operations.getObjectField(watsonMessage,
-								Var.valueOf("$.output.text[0]"));
-						Var.valueOf(cronapi.telegram.bots.TelegramBotOperations.sendMessage(cronapi.object.Operations
-								.newObject(Var.valueOf("cronapi.telegram.bots.methods.SendMessage"),
-										Var.valueOf("chatId", chatId), Var.valueOf("text", watsonText),
-										Var.valueOf("replyMarkup", Var.VAR_NULL), Var.valueOf("token", token))
-								.getTypedObject(cronapi.telegram.bots.methods.SendMessage.class)));
+						cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("numero_ra"), numeroRa);
 					}
 				} else if (Var.valueOf(watsonText.equals(Var.valueOf("_obterAgendaSugerida"))).getObjectAsBoolean()) {
 					{
