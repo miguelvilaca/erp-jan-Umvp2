@@ -173,7 +173,7 @@
         <dependency>
             <groupId>io.cronapp</groupId>
             <artifactId>cronapi-telegram-bot</artifactId>
-            <version>3.6.0.0</version>
+            <version>3.6.2</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
