@@ -265,8 +265,9 @@ public class ChatBotSession extends Thread {
                 watsonMessageOptions = new MessageOptions.Builder()
                         .context(watsonMessage.getContext())
                         .workspaceId(watsonAssistantOptions.getWorkspaceId())
-                        //.input(new InputData(.Builder())
+                        .input(new InputData.Builder().text(blocklyClassName + ".Done").build())
                         .build();
+
                 watsonMessage = ConversationOperations.message("2017-05-26", //watsonAssistantOptions.getVersionDate(),
                         watsonAssistantOptions.getUserName(),
                         watsonAssistantOptions.getPassword(),
