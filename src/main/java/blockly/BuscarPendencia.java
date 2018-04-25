@@ -50,38 +50,34 @@ public class BuscarPendencia {
 						Var.VAR_NULL, Var.VAR_NULL);
 				if (cronapi.logic.Operations.isNullOrEmpty(jsonCobranca).negate().getObjectAsBoolean()) {
 					listaPendencias = cronapi.object.Operations.getObjectField(jsonCobranca, Var.valueOf("$.[*]"));
-					if ((cronapi.list.Operations.isEmpty(listaPendencias)).negate().getObjectAsBoolean()) {
-						carousel = cronapi.list.Operations.newList();
-						for (Iterator it_pendencia = listaPendencias.iterator(); it_pendencia.hasNext();) {
-							pendencia = Var.valueOf(it_pendencia.next());
-							cronapi.list.Operations
-									.addLast(carousel,
-											cronapi.map.Operations
-													.createObjectMapWith(
-															Var.valueOf("image",
-																	Var.valueOf(
-																			"https://pronatec2019.com.br/wp-content/uploads/2018/01/Cursos-PRONATEC-UNIP-2019.jpg")),
-															Var.valueOf("message",
-																	Var.valueOf(
-																			Var.valueOf("Data Vencimento:").toString()
-																					+ cronapi.object.Operations
-																							.getObjectField(pendencia,
-																									Var.valueOf(
-																											"$.dataDeVencimento"))
-																							.toString()
-																					+ Var.valueOf("\nValor:").toString()
-																					+ cronapi.object.Operations
-																							.getObjectField(pendencia,
-																									Var.valueOf(
-																											"$.valor"))
-																							.toString()))));
-						} // end for
-						cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("carousel"), carousel);
-						System.out.println(Var.valueOf("3").getObjectAsString());
-						System.out.println(carousel.getObjectAsString());
-						System.out.println(listaPendencias.getObjectAsString());
-						System.out.println(watsonContext.getObjectAsString());
-					}
+					System.out.println(listaPendencias.getObjectAsString());
+					System.out.println(cronapi.json.Operations.toList(listaPendencias).getObjectAsString());
+					System.out.println(Var.valueOf("4").getObjectAsString());
+					carousel = cronapi.list.Operations.newList();
+					for (Iterator it_pendencia = cronapi.json.Operations.toList(listaPendencias)
+							.iterator(); it_pendencia.hasNext();) {
+						pendencia = Var.valueOf(it_pendencia.next());
+						cronapi.list.Operations
+								.addLast(carousel,
+										cronapi.map.Operations
+												.createObjectMapWith(
+														Var.valueOf("image",
+																Var.valueOf(
+																		"https://pronatec2019.com.br/wp-content/uploads/2018/01/Cursos-PRONATEC-UNIP-2019.jpg")),
+														Var.valueOf("message",
+																Var.valueOf(Var.valueOf("Data Vencimento:").toString()
+																		+ cronapi.object.Operations
+																				.getObjectField(pendencia,
+																						Var.valueOf(
+																								"$.dataDeVencimento"))
+																				.toString()
+																		+ Var.valueOf("\nValor:").toString()
+																		+ cronapi.object.Operations
+																				.getObjectField(pendencia,
+																						Var.valueOf("$.valor"))
+																				.toString()))));
+					} // end for
+					cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("carousel"), carousel);
 				}
 				return Var.VAR_NULL;
 			}
