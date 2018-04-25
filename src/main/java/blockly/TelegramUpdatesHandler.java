@@ -36,12 +36,16 @@ public class TelegramUpdatesHandler {
 			private Var sysNumbers = Var.VAR_NULL;
 			private Var sysRa = Var.VAR_NULL;
 			private Var jsonRa = Var.VAR_NULL;
-			private Var numeroRa = Var.VAR_NULL;
+			private Var codigoAluno = Var.VAR_NULL;
+			private Var jsonBoleto = Var.VAR_NULL;
 
 			public Var call() throws Exception {
 				token = Var.valueOf("571514660:AAGG-86rVJlCKkN8-Oz1OFPoSrXZ8wJ7_KM");
 				workspaceId = Var.valueOf("90df8652-159d-4948-8d9a-bab4bf12a4c7");
-				chatId = cronapi.object.Operations.getObjectField(update, Var.valueOf("$.message.chat.id"));
+				chatId = cronapi.object.Operations.getObjectField(update, Var.valueOf("callbackQuery.message.chat.id"));
+				if (cronapi.logic.Operations.isNullOrEmpty(chatId).getObjectAsBoolean()) {
+					chatId = cronapi.object.Operations.getObjectField(update, Var.valueOf("$.message.chat.id"));
+				}
 				conversationQuery = cronapi.database.Operations.query(Var.valueOf("app.entity.Conversation"),
 						Var.valueOf("select c from Conversation c where c.id = :id"), Var.valueOf("id", chatId));
 				watsonConversationVersionData = Var.valueOf("2018-02-16");
@@ -95,9 +99,11 @@ public class TelegramUpdatesHandler {
 									Var.valueOf("this[0]"));
 					jsonRa = Var.valueOf(
 							Var.valueOf("{\"aluno\":[").toString() + sysRa.toString() + Var.valueOf("]}").toString());
-					numeroRa = cronapi.json.Operations.getJsonOrMapField(jsonRa, Var.valueOf("$.aluno[0].valor"));
-					if (Var.valueOf(!numeroRa.equals(Var.valueOf(""))).getObjectAsBoolean()) {
-						cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("numero_ra"), numeroRa);
+					codigoAluno = cronapi.json.Operations.getJsonOrMapField(jsonRa, Var.valueOf("$.aluno[0].valor"));
+					cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("numeroRA"),
+							cronapi.object.Operations.getObjectField(sysNumbers, Var.valueOf("this[0]")));
+					if (Var.valueOf(!codigoAluno.equals(Var.valueOf(""))).getObjectAsBoolean()) {
+						cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("codigoAluno"), codigoAluno);
 						inputData = cronapi.object.Operations.newObject(
 								Var.valueOf("com.ibm.watson.developer_cloud.conversation.v1.model.InputData"),
 								Var.valueOf("text", Var.valueOf("")));
@@ -117,9 +123,13 @@ public class TelegramUpdatesHandler {
 						watsonText = cronapi.object.Operations.getObjectField(watsonMessage,
 								Var.valueOf("$.output.text[0]"));
 					}
-				} else if (Var.valueOf(watsonText.equals(Var.valueOf("_obterAgendaSugerida"))).getObjectAsBoolean()) {
-					{
-					}
+				} else if (cronapi.logic.Operations
+						.isNullOrEmpty(cronapi.object.Operations.getObjectField(watsonMessage,
+								Var.valueOf("$.output.text[?(@.indexOf(\'_buscarPendencia\') != -1)]")))
+						.negate().getObjectAsBoolean()) {
+					jsonBoleto = Var.VAR_NULL;
+					System.out.println(Var.valueOf("Imprimindo ---->>").getObjectAsString());
+					System.out.println(watsonContext.getObjectAsString());
 				} else {
 					{
 					}
