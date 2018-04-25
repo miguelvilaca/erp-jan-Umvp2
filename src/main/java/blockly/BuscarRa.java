@@ -19,12 +19,14 @@ public class BuscarRa {
 	public static Var Executar(Var watsonMessage) throws Exception {
 		return new Callable<Var>() {
 
+			private Var watsonContext = Var.VAR_NULL;
 			private Var sysNumbers = Var.VAR_NULL;
 			private Var sysRa = Var.VAR_NULL;
 			private Var jsonRa = Var.VAR_NULL;
 			private Var codigoAluno = Var.VAR_NULL;
 
 			public Var call() throws Exception {
+				watsonContext = cronapi.object.Operations.getObjectField(watsonMessage, Var.valueOf("context"));
 				sysNumbers = cronapi.object.Operations.getObjectField(watsonMessage,
 						Var.valueOf("$.entities[?(@.entity==\'sys-number\')].value"));
 				sysRa = cronapi.object.Operations.getObjectField(

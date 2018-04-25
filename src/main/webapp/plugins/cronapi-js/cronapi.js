@@ -896,6 +896,7 @@
    * @type function
    * @name {{showModal}}
    * @nameTags Show| Modal| Exibir| Mostrar
+   * @platform W
    * @description {{showModalDesc}}
    * @param {ObjectType.STRING} component {{ComponentParam}}
    * @multilayer true
@@ -907,7 +908,6 @@
 		$('#'+id).show();
 		}
   };
-  
   
     /**
    * @type function
@@ -923,6 +923,62 @@
 		}catch(e){
         $('#'+id).hide();
 		}
+  };
+  
+  
+    /**
+   * @type function
+   * @name {{showModal}}
+   * @nameTags Show| Modal| Exibir| Mostrar
+   * @description {{showModalDesc}}
+   * @platform M
+   * @param {ObjectType.STRING} component {{ComponentParam}}
+   * @multilayer true
+   */
+    this.cronapi.screen.showIonicModal = function(/** @type {ObjectType.OBJECT} @blockType ids_from_screen*/ id) {
+      if($('#'+id).data('cronapp-modal') ) $('#'+id).data('cronapp-modal').remove();
+	    this.cronapi.$scope.$ionicModal.fromTemplateUrl(id, {
+	      scope: this.cronapi.$scope,
+        animation: 'slide-in-up'
+      }).then(function(modal){
+        $('#'+id).data('cronapp-modal', modal);
+        modal.show();
+      })
+  };
+  
+  
+	/**
+   * @type function
+   * @name {{hideModal}}
+   * @nameTags Hide| Modal| Esconder | Fechar
+   * @description {{hideModalDesc}}
+   * @platform M
+   * @param {ObjectType.STRING} component {{ComponentParam}}
+   * @multilayer true
+   */
+    this.cronapi.screen.hideIonicModal = function(/** @type {ObjectType.OBJECT} @blockType ids_from_screen*/ id) {
+      if($('#'+id).data('cronapp-modal')) {
+         var modal = $('#'+id).data('cronapp-modal');
+         modal.remove();
+        $('#'+id).data('cronapp-modal', null);
+      }
+  };
+  
+  /**
+   * @type function
+   * @name {{isShownIonicModal}}
+   * @nameTags isShown| Modal| Exibido
+   * @description {{isShownIonicModallDesc}}
+   * @platform M
+   * @param {ObjectType.STRING} component {{ComponentParam}}
+   * @returns {ObjectType.BOOLEAN}
+   */
+    this.cronapi.screen.isShownIonicModal = function(/** @type {ObjectType.OBJECT} @blockType ids_from_screen*/ id) {
+      if($('#'+id).data('cronapp-modal')) {
+         var modal = $('#'+id).data('cronapp-modal');
+         return modal.isShown();
+      }
+      return false;
   };
 
 
@@ -1012,6 +1068,21 @@
   this.cronapi.screen.logout = function() {
     if(this.cronapi.$scope.logout != undefined)
     this.cronapi.$scope.logout();
+  };
+  
+      /**
+   * @type function
+   * @name {{refreshDatasource}}
+   * @nameTags refresh|datasource|atualizar|fonte
+   * @description {{refreshDatasourceDescription}}
+   * @param {ObjectType.STRING} datasource {{datasource}}
+   * @multilayer true
+   */
+  this.cronapi.screen.refreshDatasource = function(/** @type {ObjectType.OBJECT} @blockType datasource_from_screen*/ datasource , /** @type {ObjectType.BOOLEAN} @description {{keepFilters}} @blockType util_dropdown @keys true|false @values {{true}}|{{false}}  */  keepFilters ) {
+    if(keepFilters == true || keepFilters == 'true' ){
+    this[datasource].search(this[datasource].terms , this[datasource].caseInsensitive);
+    }else
+    this[datasource].search("", this[datasource].caseInsensitive);
   };
 
   /**
@@ -2179,6 +2250,18 @@
        object = object[split[i]];
      }
      object = value;
+   };
+   
+	/**
+    * @type function
+    * @name {{createObject}}
+	* @description {{createObjectDescription}}
+    * @nameTags object
+    * @param {ObjectType.STRING} string {{string}}
+    * @returns {ObjectType.OBJECT}
+   */
+   this.cronapi.object.createObjectFromString = function(string) {
+    return JSON.parse(string);
    };  
     
    /**
