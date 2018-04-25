@@ -4,7 +4,10 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.ibm.watson.developer_cloud.conversation.v1.model.*;
+import com.ibm.watson.developer_cloud.conversation.v1.model.Context;
+import com.ibm.watson.developer_cloud.conversation.v1.model.InputData;
+import com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions;
+import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 import cronapi.Var;
 import cronapi.chatbot.methods.TelegramOptions;
 import cronapi.chatbot.methods.WatsonAssistantOptions;
@@ -19,10 +22,7 @@ import cronapi.watson.conversation.ConversationOperations;
 import org.h2.jdbcx.JdbcConnectionPool;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Method;
-import java.net.URI;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -215,8 +215,7 @@ public class ChatBotSession extends Thread {
         return updates;
     }
 
-    private void removeFromContext(MessageResponse watsonMessage, String key)
-    {
+    private void removeFromContext(MessageResponse watsonMessage, String key) {
         Context context = watsonMessage.getContext();
         context.remove(key);
         watsonMessage.setContext(context);
@@ -254,8 +253,7 @@ public class ChatBotSession extends Thread {
 
         watsonToTelegram(watsonMessage, chat);
 
-        if (watsonMessage.getContext().containsKey("blockly"))
-        {
+        if (watsonMessage.getContext().containsKey("blockly")) {
             try {
                 String blocklyClassName = watsonMessage.getContext().get("blockly").toString();
                 Class blocklyClass = Class.forName(blocklyClassName);
@@ -277,7 +275,7 @@ public class ChatBotSession extends Thread {
                         watsonMessageOptions);
             } catch (Exception e) {
                 LOGGER.log(Level.SEVERE, e.getMessage(), e);
-                for (String contextKey: watsonMessage.getContext().keySet()) {
+                for (String contextKey : watsonMessage.getContext().keySet()) {
                     removeFromContext(watsonMessage, contextKey);
                 }
 
@@ -300,8 +298,7 @@ public class ChatBotSession extends Thread {
         updateContext(watsonAssistantOptions.getWorkspaceId(), PLATFORM_TELEGRAM, chat, watsonMessage.getContext());
     }
 
-    private InlineKeyboardMarkup quickReplyToInlineKeyboardMarkup(List<Map<String, String>> quickReplyList)
-    {
+    private InlineKeyboardMarkup quickReplyToInlineKeyboardMarkup(List<Map<String, String>> quickReplyList) {
         List<InlineKeyboardButton> inlineKeyboardRow = new ArrayList<>();
 
         for (Map<String, String> quickReply : quickReplyList) {
@@ -352,22 +349,19 @@ public class ChatBotSession extends Thread {
             for (Map<String, Object> carousel : carouselList) {
                 String image = carousel.get("image").toString();
                 String message = carousel.get("message").toString();
-                //TODO Fazer Cache
-                try (InputStream photoStream =  new URL(image).openStream()) {
-                    SendPhoto sendPhoto = new SendPhoto();
-                    sendPhoto.setToken(telegramOptions.getBotToken());
-                    sendPhoto.setChatId(chat);
-                    sendPhoto.setCaption(message);
-                    sendPhoto.setPhoto(image);
+                //TODO Usar file_id
+                SendPhoto sendPhoto = new SendPhoto();
+                sendPhoto.setToken(telegramOptions.getBotToken());
+                sendPhoto.setChatId(chat);
+                sendPhoto.setCaption(message);
+                sendPhoto.setPhoto(image);
 
-                    if (carousel.containsKey("quick_reply"))
-                    {
-                        List<Map<String, String>> quickReply = (List<Map<String, String>>) carousel.get("quick_reply");
-                        sendPhoto.setReplyMarkup(quickReplyToInlineKeyboardMarkup(quickReply));
-                    }
-
-                    sendPhoto.execute();
+                if (carousel.containsKey("quick_reply")) {
+                    List<Map<String, String>> quickReply = (List<Map<String, String>>) carousel.get("quick_reply");
+                    sendPhoto.setReplyMarkup(quickReplyToInlineKeyboardMarkup(quickReply));
                 }
+
+                sendPhoto.execute();
             }
             removeFromContext(watsonMessage, "carousel");
         }
