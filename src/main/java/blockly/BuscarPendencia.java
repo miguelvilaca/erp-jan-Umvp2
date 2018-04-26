@@ -49,10 +49,7 @@ public class BuscarPendencia {
 										+ Var.valueOf("/cobrancas").toString()).toString()),
 						Var.VAR_NULL, Var.VAR_NULL);
 				if (cronapi.logic.Operations.isNullOrEmpty(jsonCobranca).negate().getObjectAsBoolean()) {
-					listaPendencias = cronapi.object.Operations.getObjectField(jsonCobranca, Var.valueOf("$.[*]"));
-					System.out.println(listaPendencias.getObjectAsString());
-					System.out.println(cronapi.json.Operations.toList(listaPendencias).getObjectAsString());
-					System.out.println(Var.valueOf("4").getObjectAsString());
+					listaPendencias = cronapi.json.Operations.toJson(jsonCobranca);
 					carousel = cronapi.list.Operations.newList();
 					for (Iterator it_pendencia = listaPendencias.iterator(); it_pendencia.hasNext();) {
 						pendencia = Var.valueOf(it_pendencia.next());
@@ -68,7 +65,7 @@ public class BuscarPendencia {
 																		+ cronapi.object.Operations
 																				.getObjectField(pendencia,
 																						Var.valueOf(
-																								"$.[*].dataDeVencimento"))
+																								"$.dataDeVencimento"))
 																				.toString()
 																		+ Var.valueOf("\nValor:").toString()
 																		+ cronapi.object.Operations

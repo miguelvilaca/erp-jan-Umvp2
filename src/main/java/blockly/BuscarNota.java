@@ -36,17 +36,16 @@ public class BuscarNota {
 						codigoAlunoBruto.getObjectAsString().indexOf(Var.valueOf(".").getObjectAsString()) + 1);
 				codigoAluno = cronapi.text.Operations.getLettersFromStartToFromStart(codigoAlunoBruto, Var.valueOf(0),
 						(cronapi.math.Operations.subtract(posicaoDoPonto, Var.valueOf(1))));
-				jsonNota = cronapi.util.Operations
-						.getURLFromOthers(
-								Var.valueOf("GET"), Var
-										.valueOf(
-												"application/json"),
-								Var.valueOf(
-										Var.valueOf("https://fabrica1.lyceum.com.br/api/pessoas/codPessoa/").toString()
-												+ codigoAluno.toString()
-												+ Var.valueOf(Var.valueOf("/codAluno/").toString() + numeroRa.toString()
-														+ Var.valueOf("/frequencia").toString()).toString()),
-								Var.VAR_NULL, Var.VAR_NULL);
+				jsonNota = cronapi.util.Operations.getURLFromOthers(
+						Var.valueOf("GET"), Var
+								.valueOf(
+										"application/json"),
+						Var.valueOf(
+								Var.valueOf("https://fabrica1.lyceum.com.br/api/pessoas").toString()
+										+ codigoAluno.toString()
+										+ Var.valueOf(Var.valueOf("/alunos/").toString() + numeroRa.toString()
+												+ Var.valueOf("/boletim").toString()).toString()),
+						Var.VAR_NULL, Var.VAR_NULL);
 				if (cronapi.logic.Operations.isNullOrEmpty(jsonNota).negate().getObjectAsBoolean()) {
 					quickReplyNotas = cronapi.list.Operations.newList();
 					cronapi.list.Operations

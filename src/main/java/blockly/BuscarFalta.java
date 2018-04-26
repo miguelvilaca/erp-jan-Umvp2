@@ -2,6 +2,7 @@ package blockly;
 
 import cronapi.*;
 import cronapi.rest.security.CronappSecurity;
+import java.util.Iterator;
 import java.util.concurrent.Callable;
 
 @CronapiMetaData(type = "blockly")
@@ -25,6 +26,8 @@ public class BuscarFalta {
 			private Var posicaoDoPonto = Var.VAR_NULL;
 			private Var codigoAluno = Var.VAR_NULL;
 			private Var jsonFalta = Var.VAR_NULL;
+			private Var listaFaltas = Var.VAR_NULL;
+			private Var falta = Var.VAR_NULL;
 			private Var quickReplyFaltas = Var.VAR_NULL;
 
 			public Var call() throws Exception {
@@ -47,7 +50,13 @@ public class BuscarFalta {
 												+ Var.valueOf(Var.valueOf("/codAluno/").toString() + numeroRa.toString()
 														+ Var.valueOf("/frequencia").toString()).toString()),
 								Var.VAR_NULL, Var.VAR_NULL);
+				listaFaltas = cronapi.json.Operations.toList(jsonFalta);
 				if (cronapi.logic.Operations.isNullOrEmpty(jsonFalta).negate().getObjectAsBoolean()) {
+					for (Iterator it_falta = listaFaltas.iterator(); it_falta.hasNext();) {
+						falta = Var.valueOf(it_falta.next());
+						{
+						}
+					} // end for
 					quickReplyFaltas = cronapi.list.Operations.newList();
 					cronapi.list.Operations
 							.addLast(quickReplyFaltas,
@@ -56,10 +65,12 @@ public class BuscarFalta {
 													Var.valueOf(cronapi.object.Operations
 															.getObjectField(jsonFalta, Var.valueOf("$.[*]"))
 															.toString()))));
-					System.out.println(quickReplyFaltas.getObjectAsString());
+					System.out.println(watsonMessage.getObjectAsString());
 				}
-				cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("quick_reply"), quickReplyFaltas);
-				return Var.VAR_NULL;
+				cronapi.map.Operations.setMapFieldByKey(watsonMessage, Var.valueOf("quick_reply"),
+						Var.valueOf("aqui vai quick"));
+				return Var.valueOf(cronapi.telegram.bots.SendOperations
+						.sendMessage(watsonMessage.getTypedObject(cronapi.telegram.bots.methods.SendMessage.class)));
 			}
 		}.call();
 	}
