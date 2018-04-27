@@ -36,7 +36,7 @@ public class BuscarCampusProximo {
 						Var.valueOf("$.entities[?(@.entity==\'sys-number\')].value"))));
 				codigoCursoBruto = cronapi.map.Operations.getJsonOrMapField(watsonContext, Var.valueOf("$.idCurso"));
 				posicaoDoPonto = Var.valueOf(
-						codigoCursoBruto.getObjectAsString().indexOf(Var.valueOf(",").getObjectAsString()) + 1);
+						codigoCursoBruto.getObjectAsString().indexOf(Var.valueOf(".").getObjectAsString()) + 1);
 				codigoCurso = cronapi.text.Operations.getLettersFromStartToFromStart(codigoCursoBruto, Var.valueOf(0),
 						(cronapi.math.Operations.subtract(posicaoDoPonto, Var.valueOf(1))));
 				jsonPolosProximos = cronapi.util.Operations.getURLFromOthers(Var.valueOf("GET"),
