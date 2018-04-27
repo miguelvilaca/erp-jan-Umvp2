@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.google.gson.Gson;
 import com.ibm.watson.developer_cloud.conversation.v1.model.Context;
 import com.ibm.watson.developer_cloud.conversation.v1.model.InputData;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 import cronapi.Var;
+import cronapi.chatbot.methods.FacebookOptions;
 import cronapi.chatbot.methods.TelegramOptions;
 import cronapi.chatbot.methods.WatsonAssistantOptions;
 import cronapi.telegram.bots.SendOperations;
@@ -90,6 +92,7 @@ public class ChatBotSession extends Thread {
     private final ExecutorService executor = Executors.newCachedThreadPool();
     private TelegramOptions telegramOptions;
     private WatsonAssistantOptions watsonAssistantOptions;
+    private FacebookOptions facebookOptions;
     private GetUpdates getUpdates = new GetUpdates();
     private int lastReceivedUpdate;
 
@@ -171,16 +174,41 @@ public class ChatBotSession extends Thread {
         this.watsonAssistantOptions = watsonAssistantOptions;
     }
 
+    public FacebookOptions getFacebookOptions() {
+        return facebookOptions;
+    }
+
+    public void setFacebookOptions(FacebookOptions facebookOptions) {
+        this.facebookOptions = facebookOptions;
+    }
+
     @Override
     public void run() {
         setPriority(Thread.MIN_PRIORITY);
-        executor.execute(this::runTelegramBot);
+        if (telegramOptions != null)
+            executor.execute(this::runTelegramBot);
+//        if (facebookOptions != null)
+//            executor.execute(this::runFacebookBot);
         try {
             executor.awaitTermination(Long.MAX_VALUE, TimeUnit.DAYS);
         } catch (InterruptedException e) {
             interrupt();
         }
     }
+
+//    private void runFacebookBot() {
+//        Messenger messenger = Messenger.create(
+//                facebookOptions.getPageAccessToken(),
+//                facebookOptions.getAppSecret(),
+//                facebookOptions.getVerifyToken()
+//        );
+//
+//        try {
+//            messenger.verifyWebhook("subscribe", facebookOptions.getVerifyToken());
+//        } catch (MessengerVerificationException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private void runTelegramBot() {
         getUpdates = new GetUpdates();
@@ -235,6 +263,22 @@ public class ChatBotSession extends Thread {
         if (message == null)
             message = update.getMessage().getText();
 
+        Map incomingContext = null;
+
+        if (message.startsWith("{"))
+        {
+            Map incomingMap = new Gson().fromJson(message, Map.class);
+            if (incomingMap.containsKey("context"))
+            {
+                incomingContext = (Map) incomingMap.get("context");
+            }
+
+            if (incomingMap.containsKey("message"))
+            {
+                message = incomingMap.get("message").toString();
+            }
+        }
+
         InputData input = new InputData.Builder()
                 .text(message)
                 .build();
@@ -244,6 +288,16 @@ public class ChatBotSession extends Thread {
                 .workspaceId(watsonAssistantOptions.getWorkspaceId())
                 .input(input)
                 .build();
+
+        if (incomingContext != null)
+        {
+            for (Object incomingContextKey : incomingContext.keySet())
+            {
+                watsonMessageOptions.context().put(incomingContextKey.toString(),
+                        incomingContext.get(incomingContextKey));
+            }
+        }
+
         MessageResponse watsonMessage = ConversationOperations.message("2017-05-26", //watsonAssistantOptions.getVersionDate(),
                 watsonAssistantOptions.getUserName(),
                 watsonAssistantOptions.getPassword(),
@@ -299,16 +353,21 @@ public class ChatBotSession extends Thread {
         updateContext(watsonAssistantOptions.getWorkspaceId(), PLATFORM_TELEGRAM, chat, watsonMessage.getContext());
     }
 
-    private InlineKeyboardMarkup quickReplyToInlineKeyboardMarkup(List<Map<String, String>> quickReplyList) {
+    private InlineKeyboardMarkup quickReplyToInlineKeyboardMarkup(List<Map> quickReplyList) {
         List<InlineKeyboardButton> inlineKeyboardRow = new ArrayList<>();
 
-        for (Map<String, String> quickReply : quickReplyList) {
+        for (Map quickReply : quickReplyList) {
             InlineKeyboardButton inlineKeyboardButton = new InlineKeyboardButton();
-            inlineKeyboardButton.setText(quickReply.get("text"));
-            if (quickReply.containsKey("data"))
-                inlineKeyboardButton.setCallbackData(quickReply.get("data"));
+            inlineKeyboardButton.setText(quickReply.get("text").toString());
+            if (quickReply.containsKey("data")) {
+                Object data = quickReply.get("data");
+                if (data instanceof String)
+                    inlineKeyboardButton.setCallbackData(data.toString());
+                else
+                    inlineKeyboardButton.setCallbackData(new Gson().toJson(data));
+            }
             else if (quickReply.containsKey("url"))
-                inlineKeyboardButton.setUrl(quickReply.get("url"));
+                inlineKeyboardButton.setUrl(quickReply.get("url").toString());
             inlineKeyboardRow.add(inlineKeyboardButton);
         }
 
@@ -334,7 +393,7 @@ public class ChatBotSession extends Thread {
 
         if (sendMessage != null) {
             if (watsonMessage.getContext().containsKey("quick_reply")) {
-                List<Map<String, String>> quickReply = (List<Map<String, String>>) watsonMessage.getContext()
+                List<Map> quickReply = (List<Map>) watsonMessage.getContext()
                         .get("quick_reply");
                 InlineKeyboardMarkup replyMarkup = quickReplyToInlineKeyboardMarkup(quickReply);
                 sendMessage.setReplyMarkup(replyMarkup);
@@ -345,7 +404,7 @@ public class ChatBotSession extends Thread {
         }
 
         if (watsonMessage.getContext().containsKey("carousel")) {
-            List<Map<String, Object>> carouselList = (List<Map<String, Object>>) watsonMessage.getContext()
+            List<Map> carouselList = (List<Map>) watsonMessage.getContext()
                     .get("carousel");
             for (Map<String, Object> carousel : carouselList) {
                 String image = carousel.get("image").toString();
@@ -358,7 +417,7 @@ public class ChatBotSession extends Thread {
                 sendPhoto.setPhoto(image);
 
                 if (carousel.containsKey("quick_reply")) {
-                    List<Map<String, String>> quickReply = (List<Map<String, String>>) carousel.get("quick_reply");
+                    List<Map> quickReply = (List<Map>) carousel.get("quick_reply");
                     sendPhoto.setReplyMarkup(quickReplyToInlineKeyboardMarkup(quickReply));
                 }
 
