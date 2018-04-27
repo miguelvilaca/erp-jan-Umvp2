@@ -27,7 +27,7 @@ public class BuscarFalta {
 			private Var codigoAluno = Var.VAR_NULL;
 			private Var jsonFalta = Var.VAR_NULL;
 			private Var listaFaltas = Var.VAR_NULL;
-			private Var carousel = Var.VAR_NULL;
+			private Var retornoFalta = Var.VAR_NULL;
 			private Var falta = Var.VAR_NULL;
 
 			public Var call() throws Exception {
@@ -52,30 +52,22 @@ public class BuscarFalta {
 								Var.VAR_NULL, Var.VAR_NULL);
 				if (cronapi.logic.Operations.isNullOrEmpty(jsonFalta).negate().getObjectAsBoolean()) {
 					listaFaltas = cronapi.json.Operations.toList(jsonFalta);
-					carousel = cronapi.list.Operations.newList();
+					retornoFalta = Var.valueOf("");
 					for (Iterator it_falta = listaFaltas.iterator(); it_falta.hasNext();) {
 						falta = Var.valueOf(it_falta.next());
-						cronapi.list.Operations.addLast(carousel,
-								cronapi.map.Operations.createObjectMapWith(Var.valueOf("image", Var.valueOf("")),
-										Var.valueOf("message", Var.valueOf(Var.valueOf("Disciplina:")
+						retornoFalta = Var
+								.valueOf(retornoFalta.toString() + Var.valueOf("Disciplina:\n").toString()
+										+ cronapi.object.Operations
+												.getObjectField(falta, Var.valueOf("$.componenteCurricular")).toString()
+										+ Var.valueOf("\n  - Faltas: ").toString()
+										+ cronapi.object.Operations.getObjectField(falta, Var.valueOf("$.numeroFaltas"))
 												.toString()
-												+ cronapi.object.Operations.getObjectField(falta, Var.valueOf(
-														"$.componenteCurricular"))
-														.toString()
-												+ Var.valueOf(
-														Var.valueOf("- Faltas: ").toString() + cronapi.object.Operations
-																.getObjectField(falta, Var.valueOf("$.numeroFaltas"))
-																.toString()
-																+ Var.valueOf("- Freq: ")
-																		.toString()
-																+ cronapi.object.Operations
-																		.getObjectField(falta,
-																				Var.valueOf("$.percentualFrequencia"))
-																		.toString())
-														.toString())),
-										Var.valueOf("quick_reply", Var.valueOf(""))));
-						cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("carousel"), carousel);
+										+ Var.valueOf("\n  - Freq: ").toString()
+										+ cronapi.object.Operations
+												.getObjectField(falta, Var.valueOf("$.percentualFrequencia")).toString()
+										+ Var.valueOf("\n").toString());
 					} // end for
+					cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("retornoFalta"), retornoFalta);
 				}
 				return Var.VAR_NULL;
 			}

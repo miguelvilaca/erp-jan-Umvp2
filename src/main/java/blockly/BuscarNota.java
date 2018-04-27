@@ -27,7 +27,7 @@ public class BuscarNota {
 			private Var codigoAluno = Var.VAR_NULL;
 			private Var jsonNota = Var.VAR_NULL;
 			private Var listaNotas = Var.VAR_NULL;
-			private Var carousel = Var.VAR_NULL;
+			private Var retornoNota = Var.VAR_NULL;
 			private Var nota = Var.VAR_NULL;
 
 			public Var call() throws Exception {
@@ -51,25 +51,16 @@ public class BuscarNota {
 						Var.VAR_NULL, Var.VAR_NULL);
 				if (cronapi.logic.Operations.isNullOrEmpty(jsonNota).negate().getObjectAsBoolean()) {
 					listaNotas = cronapi.json.Operations.toList(jsonNota);
-					carousel = cronapi.list.Operations.newList();
-					System.out.println(listaNotas.getObjectAsString());
+					retornoNota = Var.valueOf("");
 					for (Iterator it_nota = listaNotas.iterator(); it_nota.hasNext();) {
 						nota = Var.valueOf(it_nota.next());
-						cronapi.list.Operations
-								.addLast(carousel,
-										cronapi.map.Operations.createObjectMapWith(
-												Var.valueOf("image", Var.valueOf("")), Var
-														.valueOf("message",
-																Var.valueOf(
-																		Var.valueOf("Disciplina:").toString()
-																				+ cronapi.object.Operations
-																						.getObjectField(nota,
-																								Var.valueOf(
-																										"$.nomeDisciplina"))
-																						.toString())),
-												Var.valueOf("quick_reply", Var.valueOf(""))));
-						cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("carousel"), carousel);
+						retornoNota = Var.valueOf(retornoNota.toString() + Var.valueOf("Disciplina:\n").toString()
+								+ cronapi.object.Operations.getObjectField(nota, Var.valueOf("$.nomeDisciplina"))
+										.toString()
+								+ Var.valueOf("\n  - Média: ").toString() + Var.valueOf("\n").toString()
+								+ Var.valueOf("\n").toString());
 					} // end for
+					cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("retornoNota"), retornoNota);
 				}
 				return Var.VAR_NULL;
 			}
