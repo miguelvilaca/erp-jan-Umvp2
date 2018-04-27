@@ -29,12 +29,13 @@ public class BuscarPendencia {
 			private Var listaPendencias = Var.VAR_NULL;
 			private Var carousel = Var.VAR_NULL;
 			private Var pendencia = Var.VAR_NULL;
+			private Var quick_reply = Var.VAR_NULL;
 
 			public Var call() throws Exception {
 				watsonContext = cronapi.object.Operations.getObjectField(watsonMessage, Var.valueOf("context"));
 				codigoAlunoBruto = cronapi.conversion.Operations.toString(
-						cronapi.json.Operations.getJsonOrMapField(watsonContext, Var.valueOf("$.codigoAluno._object")));
-				numeroRa = cronapi.json.Operations.getJsonOrMapField(watsonContext, Var.valueOf("$.numeroRA._object"));
+						cronapi.json.Operations.getJsonOrMapField(watsonContext, Var.valueOf("$.codigoAluno")));
+				numeroRa = cronapi.json.Operations.getJsonOrMapField(watsonContext, Var.valueOf("$.numeroRA"));
 				posicaoDoPonto = Var.valueOf(
 						codigoAlunoBruto.getObjectAsString().indexOf(Var.valueOf(".").getObjectAsString()) + 1);
 				codigoAluno = cronapi.text.Operations.getLettersFromStartToFromStart(codigoAlunoBruto, Var.valueOf(0),
@@ -53,6 +54,13 @@ public class BuscarPendencia {
 					carousel = cronapi.list.Operations.newList();
 					for (Iterator it_pendencia = listaPendencias.iterator(); it_pendencia.hasNext();) {
 						pendencia = Var.valueOf(it_pendencia.next());
+						quick_reply = cronapi.list.Operations.newList();
+						cronapi.list.Operations.addLast(quick_reply,
+								cronapi.map.Operations.createObjectMapWith(
+										Var.valueOf("url",
+												Var.valueOf(
+														"https://upload.wikimedia.org/wikipedia/commons/c/c7/BoletoBancario.png")),
+										Var.valueOf("text", Var.valueOf("Pagar boleto"))));
 						cronapi.list.Operations
 								.addLast(carousel,
 										cronapi.map.Operations
@@ -71,9 +79,10 @@ public class BuscarPendencia {
 																		+ cronapi.object.Operations
 																				.getObjectField(pendencia,
 																						Var.valueOf("$.valor"))
-																				.toString()))));
+																				.toString())),
+														Var.valueOf("quick_reply", quick_reply)));
+						cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("carousel"), carousel);
 					} // end for
-					cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("carousel"), carousel);
 				}
 				return Var.VAR_NULL;
 			}
