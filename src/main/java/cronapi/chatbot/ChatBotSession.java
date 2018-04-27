@@ -15,6 +15,7 @@ import cronapi.chatbot.methods.TelegramOptions;
 import cronapi.chatbot.methods.WatsonAssistantOptions;
 import cronapi.telegram.bots.SendOperations;
 import cronapi.telegram.bots.methods.GetUpdates;
+import cronapi.telegram.bots.methods.SendLocation;
 import cronapi.telegram.bots.methods.SendMessage;
 import cronapi.telegram.bots.methods.SendPhoto;
 import cronapi.telegram.bots.models.InlineKeyboardButton;
@@ -424,6 +425,20 @@ public class ChatBotSession extends Thread {
                 sendPhoto.execute();
             }
             removeFromContext(watsonMessage, "carousel");
+        }
+
+        if (watsonMessage.getContext().containsKey("location")) {
+            Map location = (Map) watsonMessage.getContext().get("location");
+
+            SendLocation sendLocation = new SendLocation();
+            sendLocation.setToken(telegramOptions.getBotToken());
+            sendLocation.setChatId(chat);
+            sendLocation.setLatitude(Float.valueOf(location.get("latitude").toString()));
+            sendLocation.setLongitude(Float.valueOf(location.get("longitude").toString()));
+
+            sendLocation.execute();
+
+            removeFromContext(watsonMessage, "location");
         }
     }
 }
