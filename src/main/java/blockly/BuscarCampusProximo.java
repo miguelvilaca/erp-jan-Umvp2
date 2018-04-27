@@ -32,8 +32,8 @@ public class BuscarCampusProximo {
 
 			public Var call() throws Exception {
 				watsonContext = cronapi.object.Operations.getObjectField(watsonMessage, Var.valueOf("context"));
-				cep = cronapi.object.Operations.getObjectField(watsonMessage,
-						Var.valueOf("$.entities[?(@.entity==\'sys-number\')].value"));
+				cep = cronapi.list.Operations.getFirst((cronapi.object.Operations.getObjectField(watsonMessage,
+						Var.valueOf("$.entities[?(@.entity==\'sys-number\')].value"))));
 				codigoCursoBruto = cronapi.map.Operations.getJsonOrMapField(watsonContext, Var.valueOf("$.idCurso"));
 				posicaoDoPonto = Var.valueOf(
 						codigoCursoBruto.getObjectAsString().indexOf(Var.valueOf(".").getObjectAsString()) + 1);
