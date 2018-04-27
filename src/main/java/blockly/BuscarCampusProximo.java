@@ -36,7 +36,7 @@ public class BuscarCampusProximo {
 						Var.valueOf("$.entities[?(@.entity==\'sys-number\')].value"))));
 				codigoCursoBruto = cronapi.map.Operations.getJsonOrMapField(watsonContext, Var.valueOf("$.idCurso"));
 				posicaoDoPonto = Var.valueOf(
-						codigoCursoBruto.getObjectAsString().indexOf(Var.valueOf(".").getObjectAsString()) + 1);
+						codigoCursoBruto.getObjectAsString().indexOf(Var.valueOf(",").getObjectAsString()) + 1);
 				codigoCurso = cronapi.text.Operations.getLettersFromStartToFromStart(codigoCursoBruto, Var.valueOf(0),
 						(cronapi.math.Operations.subtract(posicaoDoPonto, Var.valueOf(1))));
 				jsonPolosProximos = cronapi.util.Operations.getURLFromOthers(Var.valueOf("GET"),
@@ -49,27 +49,16 @@ public class BuscarCampusProximo {
 					campus = Var.valueOf("");
 					for (Iterator it_polos = listaPolosProximos.iterator(); it_polos.hasNext();) {
 						polos = Var.valueOf(it_polos.next());
-						campus = cronapi.map.Operations
-								.createObjectMapWith(
-										Var.valueOf("message",
-												Var.valueOf(
-														Var.valueOf("nome").toString()
-																+ cronapi.object.Operations
-																		.getObjectField(polos, Var.valueOf("$.Nome"))
-																		.toString()
-																+ Var.valueOf("latitude").toString()
-																+ cronapi.object.Operations
-																		.getObjectField(polos,
-																				Var.valueOf("$.Latitude"))
-																		.toString()
-																+ Var.valueOf("longitude").toString()
-																+ cronapi.object.Operations
-																		.getObjectField(polos,
-																				Var.valueOf("$.Longitude"))
-																		.toString())));
+						campus = cronapi.map.Operations.createObjectMapWith(
+								Var.valueOf("latitude",
+										cronapi.object.Operations.getObjectField(polos, Var.valueOf("$.Latitude"))),
+								Var.valueOf("longitude",
+										cronapi.object.Operations.getObjectField(polos, Var.valueOf("$.Longitude"))));
 						break;
 					} // end for
 					cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("location"), campus);
+					cronapi.map.Operations.setMapFieldByKey(watsonContext, Var.valueOf("nomeCampus"),
+							cronapi.object.Operations.getObjectField(polos, Var.valueOf("$.Nome")));
 				}
 				return Var.VAR_NULL;
 			}
