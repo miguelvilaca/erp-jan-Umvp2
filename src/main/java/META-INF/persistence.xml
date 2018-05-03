@@ -18,7 +18,7 @@
         <class>diagram.hygia.entity.HyProgramas</class>
         <class>diagram.hygia.entity.HyProfissionais</class>
         <properties>
-            <property name="eclipselink.ddl-generation" value="none"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
         </properties>
     </persistence-unit>
     <persistence-unit name="app" transaction-type="RESOURCE_LOCAL">

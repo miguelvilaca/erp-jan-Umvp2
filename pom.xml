@@ -166,11 +166,6 @@
             <version>0.0.19</version>
         </dependency>
         <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc7</artifactId>
-            <version>12.1.0.2</version>
-        </dependency>
-        <dependency>
             <groupId>io.cronapp</groupId>
             <artifactId>cronapi-telegram-bot</artifactId>
             <version>3.6.2</version>
