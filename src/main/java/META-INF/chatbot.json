@@ -1,0 +1,19 @@
+{
+  "chatbot": {
+    "watson": {
+      "workspace": "90df8652-159d-4948-8d9a-bab4bf12a4c7",
+      "username": "b61c3c7a-cc63-4613-a747-57bdc1aa6f0e",
+      "password": "SQKxJGCToBB0",
+      "error": "8dd7fb88-bb44-4ec3-9524-193bc11ad008"
+    },
+    "facebook": {
+      "page": "EAADMJFHnAZC4BALAAJTl9ZA5EpblHweUEN7G9dovszf89DUWpB6ZC3b1VHLB1qqzjoD5zP1ZAWOS3oNjdW60g9JvNUGsOfoTslTWCd3wwDl7sX3W3jOHZB230B5uWu0Trd6VZAJQbtnoe2of8wuq7nMn1nyUEvZAUEZCvKZBaIcKZAcAZDZD",
+      "app": "58564f2aca3a6b2793b6b76364b885bb",
+      "verify": "58564f2aca3a6b2793b6b76364b885bb"
+    },
+    "telegram": {
+      "token": "582059621:AAFevIg1KpOpGxzJSkdTQsB9nRIWjequPhg",
+      "url": "https://unipchatbot.makerplanet.com/api/cronapi/chatbot/telegram"
+    }
+  }
+}

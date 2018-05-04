@@ -3,6 +3,7 @@ package cronapi.chatbot.methods;
 public class StartChatBot {
     private TelegramOptions telegramOptions;
     private WatsonAssistantOptions watsonAssistantOptions;
+    private FacebookOptions facebookOptions;
 
     public TelegramOptions getTelegramOptions() {
         return telegramOptions;
@@ -18,5 +19,13 @@ public class StartChatBot {
 
     public void setWatsonAssistantOptions(WatsonAssistantOptions watsonAssistantOptions) {
         this.watsonAssistantOptions = watsonAssistantOptions;
+    }
+
+    public FacebookOptions getFacebookOptions() {
+        return facebookOptions;
+    }
+
+    public void setFacebookOptions(FacebookOptions facebookOptions) {
+        this.facebookOptions = facebookOptions;
     }
 }

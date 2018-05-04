@@ -1,23 +1,5 @@
 {
-	"onSystemStarts": {
-		"blocklyClass": "blockly.RunAtStartup",
-		"blocklyMethod": "Executar",
-		"blockly": {
-			"namespace": "blockly.RunAtStartup",
-			"classNameNew": "RunAtStartup",
-			"classNameOld": "RunAtStartup",
-			"sourcePath": "src/main/java/blockly/RunAtStartup.blockly",
-			"language": "java",
-			"class": "blockly.RunAtStartup",
-			"methods": [
-				{
-					"name": "Executar",
-					"hasReturn": "true",
-					"params": []
-				}
-			]
-		}
-	},
+	"onSystemStarts": null,
 	"onLogout": null,
 	"onLogin": null,
 	"onSessionCreate": null,

@@ -12,6 +12,8 @@ public class SecurityPermission implements Permission {
   
   @Override
   public void loadSecurityPermission(HttpSecurity http) throws Exception {
+    // web hooks
+    http.authorizeRequests().antMatchers("/webhooks/**").permitAll();
     // public
     http.authorizeRequests().antMatchers("/auth/**").permitAll();	
     http.authorizeRequests().antMatchers("/index.html").permitAll();
