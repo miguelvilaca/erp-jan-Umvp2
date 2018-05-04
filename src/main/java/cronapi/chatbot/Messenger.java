@@ -37,7 +37,7 @@ public interface Messenger {
                         sendCarousel(conversationId, carouselList);
                     }
 
-                    if (messageResponse.getContext().containsKey("carousel")) {
+                    if (messageResponse.getContext().containsKey("quick_reply")) {
                         String quickReply = OBJECT_MAPPER.writeValueAsString(messageResponse.getContext().get("quick_reply"));
                         WatsonAssistant.removeFromContext(messageResponse, "quick_reply");
                         List<QuickReply> quickReplyList = OBJECT_MAPPER.readValue(quickReply, TYPE_LIST_QUICKREPLY);
